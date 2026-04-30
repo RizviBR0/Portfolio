@@ -26,7 +26,7 @@ export function Footer() {
         </FadeIn>
 
         <div className="mt-24 sm:mt-32 md:mt-40 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[#D7E2EA]/40 text-sm font-light">
-          <span>&copy; {new Date().getFullYear()} Jack. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Rizvi. All rights reserved.</span>
           <div className="flex gap-6 uppercase tracking-widest text-xs">
             <a href="#about" className="hover:text-white/80 transition-colors">About</a>
             <a href="#services" className="hover:text-white/80 transition-colors">Services</a>

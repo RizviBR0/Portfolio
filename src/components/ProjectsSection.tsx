@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import { FadeIn } from "./FadeIn";
+
 import { LiveProjectButton } from "./LiveProjectButton";
+import { FadeIn } from "./FadeIn";
 
 const projects = [
   {
@@ -124,7 +125,7 @@ export function ProjectsSection() {
       <FadeIn delay={0} y={40}>
         <h2 
           className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 leading-none"
-          style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
+        style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
         >
           Project
         </h2>

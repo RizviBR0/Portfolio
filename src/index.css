@@ -9,6 +9,10 @@
 
 
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body, #root, .main-wrapper {
   background-color: #0C0C0C;
   color: #fff;

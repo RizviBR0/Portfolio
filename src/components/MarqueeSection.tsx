@@ -1,31 +1,26 @@
 import { useEffect, useRef, useState } from "react";
+import p1 from "../assets/projects/1.png";
+// import p2 from "../assets/projects/2.png";
+import p3 from "../assets/projects/3.png";
+import p4 from "../assets/projects/4.png";
+import p5 from "../assets/projects/5.png";
+import p6 from "../assets/projects/6.png";
+import p7 from "../assets/projects/7.png";
+import p8 from "../assets/projects/8.png";
+import p9 from "../assets/projects/9.png";
+import p10 from "../assets/projects/10.png";
+import p11 from "../assets/projects/11.png";
+import p12 from "../assets/projects/12.png";
+import p13 from "../assets/projects/13.png";
+import p14 from "../assets/projects/14.png";
+import p16 from "../assets/projects/16.png";
+import p17 from "../assets/projects/17.png";
+import p18 from "../assets/projects/18.png";
+import p19 from "../assets/projects/19.png";
 
-const row1Images = [
-  "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
-  "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif",
-  "https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif",
-  "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
-  "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif",
-  "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif",
-  "https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif",
-  "https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif",
-  "https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif",
-  "https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif",
-  "https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif",
-];
+const row1Images = [p1, p19, p3, p4, p5, p6, p7, p8, p9, p10];
 
-const row2Images = [
-  "https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif",
-  "https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif",
-  "https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif",
-  "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif",
-  "https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif",
-  "https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif",
-  "https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif",
-  "https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif",
-  "https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif",
-  "https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif",
-];
+const row2Images = [p11, p12, p13, p14, p16, p17, p18, p19];
 
 export function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -35,7 +30,8 @@ export function MarqueeSection() {
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const sectionTop = sectionRef.current.offsetTop;
-      const calculatedOffset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
+      const calculatedOffset =
+        (window.scrollY - sectionTop + window.innerHeight) * 0.3;
       setOffset(calculatedOffset);
     };
 
@@ -51,36 +47,36 @@ export function MarqueeSection() {
   const row2Tripled = [...row2Images, ...row2Images, ...row2Images];
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
     >
-      <div 
+      <div
         className="flex gap-3 will-change-transform"
         style={{ transform: `translate3d(${offset - 200}px, 0, 0)` }}
       >
         {row1Tripled.map((src, i) => (
-          <img 
+          <img
             key={`row1-${i}`}
-            src={src} 
-            alt="Project Preview" 
+            src={src}
+            alt="Project Preview"
             loading="lazy"
-            className="w-[420px] h-[270px] rounded-2xl object-cover shrink-0"
+            className="w-105 h-67.5 rounded-2xl object-top object-cover shrink-0"
           />
         ))}
       </div>
-      
-      <div 
+
+      <div
         className="flex gap-3 will-change-transform"
         style={{ transform: `translate3d(${-(offset - 200)}px, 0, 0)` }}
       >
         {row2Tripled.map((src, i) => (
-          <img 
+          <img
             key={`row2-${i}`}
-            src={src} 
-            alt="Project Preview" 
+            src={src}
+            alt="Project Preview"
             loading="lazy"
-            className="w-[420px] h-[270px] rounded-2xl object-cover shrink-0"
+            className="w-105 h-67.5 rounded-2xl object-top object-cover shrink-0"
           />
         ))}
       </div>

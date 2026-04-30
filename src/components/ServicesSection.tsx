@@ -1,5 +1,5 @@
-
 import { FadeIn } from "./FadeIn";
+import BlurText from "./BlurText";
 
 const services = [
   {
@@ -38,7 +38,7 @@ export function ServicesSection() {
       <FadeIn delay={0} y={40}>
         <h2 
           className="font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 leading-none"
-          style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
+        style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
         >
           Services
         </h2>
@@ -60,18 +60,24 @@ export function ServicesSection() {
             </div>
             
             <div className="flex flex-col gap-2 sm:gap-4">
-              <h3 
+              <BlurText
+                text={service.title}
+                delay={60}
+                animateBy="letters"
+                direction="top"
+                stepDuration={0.3}
                 className="font-medium uppercase leading-tight"
                 style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)" }}
-              >
-                {service.title}
-              </h3>
-              <p 
+              />
+              <BlurText
+                text={service.desc}
+                delay={15}
+                animateBy="words"
+                direction="bottom"
+                stepDuration={0.3}
                 className="font-light leading-relaxed max-w-2xl opacity-60"
                 style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.25rem)" }}
-              >
-                {service.desc}
-              </p>
+              />
             </div>
           </FadeIn>
         ))}

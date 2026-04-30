@@ -1,7 +1,6 @@
 import { FadeIn } from "./FadeIn";
 import { Magnet } from "./Magnet";
 import { ContactButton } from "./ContactButton";
-import Avatar from "../assets/avatar.webp";
 
 export function HeroSection() {
   return (
@@ -72,7 +71,11 @@ export function HeroSection() {
             activeTransition="transform 0.3s ease-out"
             inactiveTransition="transform 0.6s ease-in-out"
           >
-            <img src={Avatar} alt="Rizvi Portrait" className="w-full h-auto" />
+            <img
+              src="https://github.com/RizviBR0/Portfolio/blob/main/public/avatar.webp"
+              alt="Rizvi Portrait"
+              className="w-full h-auto"
+            />
           </Magnet>
         </div>
       </FadeIn>

@@ -77,10 +77,14 @@ export function HeroSection() {
       <div className="flex justify-between items-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 relative z-20">
         <FadeIn delay={0.35} y={20}>
           <p
-            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-40 sm:max-w-55 md:max-w-65"
+            className="font-light tracking-wide leading-snug max-w-40 sm:max-w-55 md:max-w-65"
             style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
           >
-            a 3d creator driven by crafting striking and unforgettable projects
+            <span className="font-bold text-xl text-[#ffffff]">Frontend Developer</span>{" "}
+            <span className="text-lg text-[#D7E2EA]">&</span>{" "}
+            <span className="font-bold text-xl text-[#ffffff]">UI/UX Designer</span> <span className="
+            text-lg text-[#D7E2EA]">Driven By
+            Crafting Striking, Modern Web Experiences Integrating 3D Aesthetics.</span>
           </p>
         </FadeIn>
 

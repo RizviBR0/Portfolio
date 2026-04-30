@@ -6,7 +6,7 @@ interface ContactButtonProps {
 
 export function ContactButton({ className = "" }: ContactButtonProps) {
   return (
-    <Magnet padding={80} magnetStrength={4} activeTransition="transform 0.2s ease-out" inactiveTransition="transform 0.4s ease-in-out">
+    <Magnet padding={200} magnetStrength={20} activeTransition="transform 0.2s ease-out" inactiveTransition="transform 0.4s ease-in-out">
       <a
         href="mailto:sabbirh9990@gmail.com"
         className={`inline-block rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base shrink-0 cursor-pointer ${className}`}

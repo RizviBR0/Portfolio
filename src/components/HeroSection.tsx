@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 import { Magnet } from "./Magnet";
 import { ContactButton } from "./ContactButton";
+import { ResumeButton } from "./ResumeButton";
 import MagicRings from "./MagicRings";
 import Avatar from "../assets/avatar.webp";
 
@@ -88,7 +89,8 @@ export function HeroSection() {
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.5} y={20}>
+        <FadeIn delay={0.5} y={20} className="flex flex-col sm:flex-row gap-4 items-end sm:items-center">
+          <ResumeButton />
           <ContactButton />
         </FadeIn>
       </div>

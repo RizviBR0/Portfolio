@@ -1,7 +1,6 @@
 import { FadeIn } from "./FadeIn";
 import { ContactButton } from "./ContactButton";
 import { FaLinkedinIn, FaGithub, FaFacebookF } from "react-icons/fa";
-import { Magnet } from "./Magnet";
 
 export function Footer() {
   return (

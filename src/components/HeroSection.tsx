@@ -57,6 +57,12 @@ export function HeroSection() {
             Projects
           </a>
           <a
+            href="#experience"
+            className="hover:opacity-70 transition-opacity duration-200"
+          >
+            Experience
+          </a>
+          <a
             href="#contact"
             className="hover:opacity-70 transition-opacity duration-200"
           >

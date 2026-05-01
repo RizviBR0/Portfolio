@@ -4,6 +4,7 @@ import { MarqueeSection } from './components/MarqueeSection'
 import { AboutSection } from './components/AboutSection'
 import { ServicesSection } from './components/ServicesSection'
 import { ProjectsSection } from './components/ProjectsSection'
+import { ExperienceSection } from './components/ExperienceSection'
 import { Footer } from './components/Footer'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
+      <ExperienceSection />
       <Footer />
     </main>
   )

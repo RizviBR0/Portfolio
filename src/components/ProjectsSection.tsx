@@ -25,8 +25,8 @@ const projects = [
   {
     num: "01",
     label: "Project",
-    name: "NightShift",
-    link: "#",
+    name: "Arohon - Request a Ride",
+    link: "https://play.google.com/store/apps/details?id=com.arohon.customer&pcampaignid=web_share",
     images: {
       leftTop: p2,
       leftBottom: p3,
@@ -35,9 +35,9 @@ const projects = [
   },
   {
     num: "02",
-    label: "Personal",
-    name: "DealHunt",
-    link: "#",
+    label: "Project",
+    name: "Linquo",
+    link: "https://www.linquo.app/",
     images: {
       leftTop: p6,
       leftBottom: p5,
@@ -82,7 +82,7 @@ function ProjectCard({
     >
       <motion.div
         style={{ scale, transformOrigin: "top center" }}
-        className="w-full border-2 border-[#D7E2EA] bg-[#0C0C0C] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 md:gap-8 overflow-hidden relative"
+        className="w-full bg-linear-to-b from-[#212121]  to-[#17141e] shadow-2xl shadow-blue-400/30 rounded-3xl sm:rounded-4xl md:rounded-[40px] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 md:gap-8 overflow-hidden relative"
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-4 sm:gap-6">

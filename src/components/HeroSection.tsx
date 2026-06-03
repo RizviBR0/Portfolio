@@ -8,7 +8,7 @@ import Avatar from "../assets/avatar.webp";
 
 export function HeroSection() {
   return (
-    <section className="h-screen flex flex-col justify-between overflow-x-clip relative">
+    <section className="h-screen flex flex-col justify-between overflow-x-clip relative pt-16 md:pt-18">
       {/* MagicRings background */}
       <div className="absolute inset-0 z-0">
         <MagicRings
@@ -35,41 +35,6 @@ export function HeroSection() {
           clickBurst={true}
         />
       </div>
-
-      <FadeIn delay={0} y={-20} as="nav" className="relative z-30">
-        <div className="flex justify-between px-6 md:px-10 pt-6 md:pt-8 text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem]">
-          <a
-            href="#about"
-            className="hover:opacity-70 transition-opacity duration-200"
-          >
-            About
-          </a>
-          <a
-            href="#services"
-            className="hover:opacity-70 transition-opacity duration-200"
-          >
-            Services
-          </a>
-          <a
-            href="#projects"
-            className="hover:opacity-70 transition-opacity duration-200"
-          >
-            Projects
-          </a>
-          <a
-            href="#experience"
-            className="hover:opacity-70 transition-opacity duration-200"
-          >
-            Experience
-          </a>
-          <a
-            href="#contact"
-            className="hover:opacity-70 transition-opacity duration-200"
-          >
-            Contact
-          </a>
-        </div>
-      </FadeIn>
 
       <div className="grow flex flex-col justify-center relative z-20 pointer-events-none">
         <div className="overflow-hidden">
@@ -105,7 +70,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 80, clipPath: "inset(100% 0% 0% 0%)" }}
         animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)" }}
         transition={{ delay: 0.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute left-1/2 -translate-x-1/2 z-10 w-70 sm:w-90 md:w-110 lg:w-130 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-none"
+        className="absolute left-1/2 -translate-x-1/2 z-10 w-70 sm:w-90 md:w-110 lg:w-130 bottom-0 pointer-events-none"
       >
         <div className="pointer-events-auto">
           <Magnet

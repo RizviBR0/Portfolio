@@ -74,12 +74,35 @@ export function AboutSection() {
           </h2>
         </FadeIn>
 
-        <div className="mt-10 sm:mt-14 md:mt-16 flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
+        <div className="mt-10 sm:mt-14 md:mt-16 flex flex-col items-center gap-10 sm:gap-14 md:gap-16 max-w-3xl">
           <AnimatedText
-            text="Frontend Developer and UI/UX Designer specializing in bridging aesthetics and functionality. I combine modern design systems with robust web technologies to build scalable SaaS platforms, intuitive e-commerce hubs, and AI-driven web experiences."
-            className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-140"
+            text="Frontend Developer and UI/UX Designer with 7+ years of design experience and 3+ years of hands-on frontend development. I specialize in bridging the gap between beautiful design and robust code — turning ideas into clean, responsive, and user-friendly web applications."
+            className="text-[#D7E2EA] font-medium text-center leading-relaxed"
             style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}
           />
+
+          <FadeIn delay={0.2} y={20}>
+            <div className="flex flex-col gap-6 text-center">
+              <p
+                className="text-[#D7E2EA]/70 font-light leading-relaxed max-w-2xl"
+                style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.15rem)" }}
+              >
+                My journey started with a deep curiosity for how people interact with digital products. I began as a UI/UX Designer, spending years mastering wireframing, prototyping, and design systems. Over time, I wanted to bring my own designs to life — which naturally pulled me into frontend development with React, Next.js, and TypeScript.
+              </p>
+              <p
+                className="text-[#D7E2EA]/70 font-light leading-relaxed max-w-2xl"
+                style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.15rem)" }}
+              >
+                I thrive on building products where design and engineering meet — whether it's crafting a seamless ride-booking experience, designing SaaS dashboards, or building AI-powered web apps. My design philosophy centers on user research, consistency, and collaboration with cross-functional teams.
+              </p>
+              <p
+                className="text-[#D7E2EA]/70 font-light leading-relaxed max-w-2xl"
+                style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.15rem)" }}
+              >
+                When I'm not coding or designing, you'll find me exploring the latest design trends, experimenting with 3D web aesthetics, contributing to open-source projects, or enjoying a good cricket match. I believe creativity flows best when you stay curious — both on and off screen.
+              </p>
+            </div>
+          </FadeIn>
 
           <ContactButton />
         </div>

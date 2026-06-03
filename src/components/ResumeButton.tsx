@@ -14,7 +14,7 @@ export function ResumeButton({ className = "" }: ResumeButtonProps) {
       inactiveTransition="transform 0.4s ease-in-out"
     >
       <a
-        href="https://drive.google.com/file/d/1ruGrIXyZGHjFvRX0mTKb9vbFSfyKQoqh/view?usp=drive_link"
+        href="https://drive.google.com/file/d/1hhGMG0YVadpseiRiq_qniyJoRj6_ax7q/view?usp=drive_link"
         target="_blank"
         rel="noopener noreferrer"
         className={`flex items-center gap-2 rounded-full border-2 border-white/20 bg-white/5 hover:bg-white/10 text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base transition-all cursor-pointer ${className}`}

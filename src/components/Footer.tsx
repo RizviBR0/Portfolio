@@ -1,6 +1,7 @@
 import { FadeIn } from "./FadeIn";
 import { ContactButton } from "./ContactButton";
-import { FaLinkedinIn, FaGithub, FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
@@ -28,14 +29,58 @@ export function Footer() {
               hear from you. Let&apos;s create something extraordinary.
             </p>
 
+            {/* Contact Details */}
+            <FadeIn delay={0.15} y={20}>
+              <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+                <a
+                  href="mailto:sabbirh9990@gmail.com"
+                  className="flex items-center gap-3 text-[#D7E2EA]/80 hover:text-white transition-colors duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#7621B0]/15 border border-[#7621B0]/25 group-hover:bg-[#7621B0]/25 transition-colors duration-300">
+                    <Mail size={18} className="text-[#7621B0]" />
+                  </div>
+                  <span className="text-sm md:text-base font-light">
+                    sabbirh9990@gmail.com
+                  </span>
+                </a>
+
+                <a
+                  href="tel:+8801815507808"
+                  className="flex items-center gap-3 text-[#D7E2EA]/80 hover:text-white transition-colors duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#42fcff]/8 border border-[#42fcff]/15 group-hover:bg-[#42fcff]/15 transition-colors duration-300">
+                    <Phone size={18} className="text-[#42fcff]" />
+                  </div>
+                  <span className="text-sm md:text-base font-light">
+                    +880 1815-507808
+                  </span>
+                </a>
+
+                <a
+                  href="https://wa.me/8801815507808"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-[#D7E2EA]/80 hover:text-white transition-colors duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-green-500/10 border border-green-500/20 group-hover:bg-green-500/20 transition-colors duration-300">
+                    <FaWhatsapp size={18} className="text-green-400" />
+                  </div>
+                  <span className="text-sm md:text-base font-light">
+                    WhatsApp
+                  </span>
+                </a>
+              </div>
+            </FadeIn>
+
             <ContactButton />
 
-            <div className="flex gap-4 mt-8">
+            {/* Social Links */}
+            <div className="flex gap-4 mt-4">
               <a
                 href="https://linkedin.com/in/sabbirrizvi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[#D7E2EA] transition-all"
+                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[#D7E2EA] hover:text-white transition-all duration-300 hover:border-white/20"
               >
                 <FaLinkedinIn size={20} />
               </a>
@@ -43,7 +88,7 @@ export function Footer() {
                 href="https://github.com/rizvibr0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[#D7E2EA] transition-all"
+                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[#D7E2EA] hover:text-white transition-all duration-300 hover:border-white/20"
               >
                 <FaGithub size={20} />
               </a>
@@ -51,7 +96,7 @@ export function Footer() {
                 href="https://facebook.com/rizvibr0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[#D7E2EA] transition-all"
+                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[#D7E2EA] hover:text-white transition-all duration-300 hover:border-white/20"
               >
                 <FaFacebookF size={20} />
               </a>
@@ -68,10 +113,10 @@ export function Footer() {
               About
             </a>
             <a
-              href="#services"
+              href="#skills"
               className="hover:text-white/80 transition-colors"
             >
-              Services
+              Skills
             </a>
             <a
               href="#projects"

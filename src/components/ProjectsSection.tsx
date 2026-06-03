@@ -31,7 +31,7 @@ const projects: (ProjectDetail & {
     num: "01",
     label: "Project",
     name: "IdeaVault - Startup Idea Hub",
-    link: "https://ideavault-client.vercel.app",
+    link: "https://ideavault-client-kmh1.vercel.app/",
     githubLink: "https://github.com/RizviBR0/ideavault-client.git",
     techStack: ["Next.js", "React", "Tailwind CSS", "Better-Auth", "MongoDB", "Express.js"],
     description:

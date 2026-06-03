@@ -70,7 +70,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 80, clipPath: "inset(100% 0% 0% 0%)" }}
         animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)" }}
         transition={{ delay: 0.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute left-1/2 -translate-x-1/2 z-10 w-70 sm:w-90 md:w-110 lg:w-130 bottom-16 sm:bottom-0 pointer-events-none"
+        className="absolute left-1/2 -translate-x-1/2 z-10 w-70 sm:w-90 md:w-110 lg:w-130 bottom-28 sm:bottom-0 pointer-events-none"
       >
         <div className="pointer-events-auto">
           <Magnet

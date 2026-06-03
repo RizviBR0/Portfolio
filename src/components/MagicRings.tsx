@@ -131,7 +131,12 @@ export default function MagicRings({
 
     let renderer: THREE.WebGLRenderer;
     try {
-      renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: false,
+        powerPreference: "high-performance",
+        precision: "mediump"
+      });
     } catch {
       return;
     }
@@ -180,7 +185,7 @@ export default function MagicRings({
     const resize = () => {
       const w = mount.clientWidth;
       const h = mount.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio, 2);
+      const dpr = Math.min(window.devicePixelRatio, 1.25);
       renderer.setSize(w, h);
       renderer.setPixelRatio(dpr);
       uniforms.uResolution.value.set(w * dpr, h * dpr);
@@ -190,6 +195,17 @@ export default function MagicRings({
 
     const ro = new ResizeObserver(resize);
     ro.observe(mount);
+
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+        });
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(mount);
 
     const onMouseMove = (e: MouseEvent) => {
       const rect = mount.getBoundingClientRect();
@@ -212,6 +228,8 @@ export default function MagicRings({
     let frameId: number;
     const animate = (t: number) => {
       frameId = requestAnimationFrame(animate);
+      if (!isVisible) return;
+
       const p = propsRef.current!;
 
       smoothMouseRef.current[0] += (mouseRef.current[0] - smoothMouseRef.current[0]) * 0.08;
@@ -250,6 +268,7 @@ export default function MagicRings({
       cancelAnimationFrame(frameId);
       window.removeEventListener('resize', resize);
       ro.disconnect();
+      observer.disconnect();
       mount.removeEventListener('mousemove', onMouseMove);
       mount.removeEventListener('mouseenter', onMouseEnter);
       mount.removeEventListener('mouseleave', onMouseLeave);

@@ -14,7 +14,7 @@ export function LiveProjectButton({ className = "", link }: LiveProjectButtonPro
       inactiveTransition="transform 0.4s ease-in-out"
     >
       <a href={link}
-        className={`inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base hover:bg-[#D7E2EA]/10 transition-colors cursor-pointer ${className}`}
+        className={`inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-5 py-2.5 sm:px-8 sm:py-3 md:px-12 md:py-4 text-xs sm:text-sm md:text-base hover:bg-[#D7E2EA]/10 transition-colors cursor-pointer ${className}`}
       >
         Live Project
       </a>

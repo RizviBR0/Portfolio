@@ -144,7 +144,7 @@ function ProjectCard({
             >
               <button
                 onClick={() => onViewDetails(project)}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-[#7621B0]/50 text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base hover:bg-[#7621B0]/15 hover:border-[#7621B0] transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-[#7621B0]/50 text-[#D7E2EA] font-medium uppercase tracking-widest px-5 py-2.5 sm:px-8 sm:py-3 md:px-12 md:py-4 text-xs sm:text-sm md:text-base hover:bg-[#7621B0]/15 hover:border-[#7621B0] transition-colors cursor-pointer"
               >
                 View Details
               </button>
@@ -154,7 +154,7 @@ function ProjectCard({
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 flex-1 min-h-0">
-          <div className="flex flex-col gap-4 w-full sm:w-[40%] sm:h-full flex-1 min-h-0">
+          <div className="hidden sm:flex flex-col gap-4 w-full sm:w-[40%] sm:h-full flex-1 min-h-0">
             <img
               src={project.images.leftTop}
               alt={`${project.name} preview 1`}

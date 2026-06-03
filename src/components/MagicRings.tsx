@@ -185,7 +185,9 @@ export default function MagicRings({
     const resize = () => {
       const w = mount.clientWidth;
       const h = mount.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio, 1.25);
+      // Use lower DPR on small screens to prevent lag
+      const maxDpr = w < 768 ? 0.75 : 1;
+      const dpr = Math.min(window.devicePixelRatio, maxDpr);
       renderer.setSize(w, h);
       renderer.setPixelRatio(dpr);
       uniforms.uResolution.value.set(w * dpr, h * dpr);
@@ -226,9 +228,18 @@ export default function MagicRings({
     mount.addEventListener('click', onClick);
 
     let frameId: number;
+    let lastRenderTime = 0;
+    const TARGET_FPS = 30;
+    const FRAME_INTERVAL = 1000 / TARGET_FPS;
+
     const animate = (t: number) => {
       frameId = requestAnimationFrame(animate);
       if (!isVisible) return;
+
+      // Throttle to ~30fps to reduce GPU/CPU load
+      const delta = t - lastRenderTime;
+      if (delta < FRAME_INTERVAL) return;
+      lastRenderTime = t - (delta % FRAME_INTERVAL);
 
       const p = propsRef.current!;
 

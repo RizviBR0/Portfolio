@@ -8,7 +8,7 @@ import Avatar from "../assets/avatar.webp";
 
 export function HeroSection() {
   return (
-    <section className="h-screen flex flex-col justify-between overflow-x-clip relative pt-16 md:pt-18">
+    <section aria-label="Hero introduction" className="h-screen flex flex-col justify-between overflow-x-clip relative pt-16 md:pt-18">
       {/* MagicRings background */}
       <div className="absolute inset-0 z-0">
         <MagicRings

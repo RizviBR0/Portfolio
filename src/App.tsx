@@ -12,7 +12,7 @@ import { Footer } from './components/Footer'
 
 function App() {
   return (
-    <main className="main-wrapper bg-[#0C0C0C] text-white min-h-screen font-sans overflow-x-clip">
+    <main className="main-wrapper bg-[#0C0C0C] text-white min-h-screen font-sans overflow-x-clip" role="main" aria-label="Rizvi - Frontend Developer and UI/UX Designer Portfolio">
       <Navbar />
       <HeroSection />
       <MarqueeSection />

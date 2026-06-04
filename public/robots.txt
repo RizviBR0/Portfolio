@@ -1,0 +1,11 @@
+# Robots.txt for https://rizvibr0.me
+# Allow all search engines to crawl everything
+
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Sitemap location
+Sitemap: https://rizvibr0.me/sitemap.xml

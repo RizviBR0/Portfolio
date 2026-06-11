@@ -3,51 +3,43 @@ import { FadeIn } from "./FadeIn";
 
 const experiences = [
   {
-    title: "2024 – Present",
+    title: "Apr 2025 – Present",
     content: (
       <div>
         <div className="mb-6">
           <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
-            Frontend Developer & UI/UX Designer
+            Frontend Engineer & UI/UX Designer
           </h4>
-          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
-            Arohon
+          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide mb-2">
+            Arohon{" "}
+            <span className="text-[#D7E2EA]/40 font-normal">
+              · Dhaka, Bangladesh | Full Time, Remote
+            </span>
           </p>
+          <a href="#" className="text-xs md:text-sm font-medium text-white hover:text-[#42fcff] transition-colors inline-block bg-[#7621B0]/10 px-3 py-1.5 rounded-full border border-[#7621B0]/20 hover:border-[#7621B0]/50">
+            Checkout product ➜
+          </a>
         </div>
 
         <div className="flex flex-col gap-4">
           <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Architected scalable web applications:
-              </span>{" "}
-              Engineered highly responsive and performant applications utilizing
-              React, Next.js, TypeScript, Tailwind CSS, and ShadCN.
+              Designed product flows for ride sharing and mobility use cases including bike, car, CNG, intercity, rental and emergency ride.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Bridged design and development:
-              </span>{" "}
-              Translated complex business requirements into intuitive wireframes
-              and high-fidelity prototypes using Figma and Adobe XD, seamlessly
-              guiding them from concept to code implementation.
+              Created clean UX for booking, scheduling, live trip tracking, trip history, driver verification and safety focused screens.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Driven product quality:
-              </span>{" "}
-              Spearheaded comprehensive QA and exploratory testing protocols,
-              proactively identifying and resolving critical UX and functional
-              anomalies prior to deployment to ensure a flawless user experience.
+              Supported responsive UI implementation and reported UX and functional issues before release.
             </p>
           </div>
         </div>
@@ -69,61 +61,49 @@ const experiences = [
     ),
   },
   {
-    title: "2023 – 2024",
+    title: "Jan 2022 - Present",
     content: (
       <div>
         <div className="mb-6">
           <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
             Frontend Developer, UI/UX Designer & QA Tester
           </h4>
-          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
-            Flexlab Studio{" "}
+          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide mb-2">
+            Flexpoint{" "}
             <span className="text-[#D7E2EA]/40 font-normal">
-              · Dhaka, Bangladesh
+              · United States | Full Time, Remote
             </span>
           </p>
+          <a href="#" className="text-xs md:text-sm font-medium text-white hover:text-[#42fcff] transition-colors inline-block bg-[#42fcff]/5 px-3 py-1.5 rounded-full border border-[#42fcff]/15 hover:border-[#42fcff]/40">
+            Checkout product ➜
+          </a>
         </div>
 
         <div className="flex flex-col gap-4">
           <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Built dynamic user interfaces:
-              </span>{" "}
-              Developed responsive web interfaces and streamlined user
-              experiences using modern front-end tech stacks like React and
-              Next.js.
+              Built responsive web interfaces using React, Next.js, TypeScript, Tailwind CSS and ShadCN UI.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Delivered end-to-end design:
-              </span>{" "}
-              Designed high-fidelity UI mockups and interactive prototypes in
-              Figma, ensuring strict alignment with client specifications and
-              project goals.
+              Converted product requirements into wireframes, high-fidelity UI designs and frontend interfaces.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Optimized usability:
-              </span>{" "}
-              Conducted thorough exploratory testing and quality assurance
-              checks, significantly reducing post-release bugs and improving
-              overall site functionality.
+              Worked with developers to maintain design accuracy, usability and smooth implementation.
             </p>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-2 mt-6">
-          {["React", "Next.js", "Figma", "QA Testing", "Prototyping"].map(
+          {["React", "Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI", "Figma", "Wireframing"].map(
             (tech) => (
               <span
                 key={tech}
@@ -138,17 +118,17 @@ const experiences = [
     ),
   },
   {
-    title: "2018 – 2022",
+    title: "Jan 2018 - Jan 2022",
     content: (
       <div>
         <div className="mb-6">
           <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
-            UI/UX Designer & QA Tester
+            UI/UX Designer
           </h4>
           <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
             ARUX Studio{" "}
             <span className="text-[#D7E2EA]/40 font-normal">
-              · Dhaka, Bangladesh
+              · Dhaka, Bangladesh | Full Time, Remote
             </span>
           </p>
         </div>
@@ -157,36 +137,21 @@ const experiences = [
           <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Crafted user-centered products:
-              </span>{" "}
-              Designed intuitive interfaces and interactive prototypes for a
-              diverse portfolio of web and mobile applications, serving both
-              local and international clients.
+              Designed user-centered web and mobile interfaces for local and international clients.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Enhanced user flows:
-              </span>{" "}
-              Facilitated usability testing and user feedback sessions, directly
-              improving task completion rates and eliminating friction in
-              critical user journeys.
+              Created wireframes, prototypes and visual designs using Figma and Adobe XD.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              <span className="text-white font-medium">
-                Collaborated across teams:
-              </span>{" "}
-              Worked closely with engineering teams to ensure design feasibility
-              and maintain pixel-perfect accuracy from initial concept through
-              production deployment.
+              Ran usability checks and improved user flows based on feedback.
             </p>
           </div>
         </div>
@@ -194,10 +159,10 @@ const experiences = [
         <div className="flex flex-wrap gap-2 mt-6">
           {[
             "UI/UX Design",
+            "Figma",
+            "Adobe XD",
             "Prototyping",
-            "Usability Testing",
-            "QA",
-            "Cross-team Collaboration",
+            "Usability Checks",
           ].map((tech) => (
             <span
               key={tech}

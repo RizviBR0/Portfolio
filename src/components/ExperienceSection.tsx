@@ -10,15 +10,12 @@ const experiences = [
           <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
             Frontend Engineer & UI/UX Designer
           </h4>
-          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide mb-2">
+          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
             Arohon{" "}
             <span className="text-[#D7E2EA]/40 font-normal">
               · Dhaka, Bangladesh | Full Time, Remote
             </span>
           </p>
-          <a href="#" className="text-xs md:text-sm font-medium text-white hover:text-[#42fcff] transition-colors inline-block bg-[#7621B0]/10 px-3 py-1.5 rounded-full border border-[#7621B0]/20 hover:border-[#7621B0]/50">
-            Checkout product ➜
-          </a>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -68,15 +65,12 @@ const experiences = [
           <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
             Frontend Developer, UI/UX Designer & QA Tester
           </h4>
-          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide mb-2">
+          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
             Flexpoint{" "}
             <span className="text-[#D7E2EA]/40 font-normal">
               · United States | Full Time, Remote
             </span>
           </p>
-          <a href="#" className="text-xs md:text-sm font-medium text-white hover:text-[#42fcff] transition-colors inline-block bg-[#42fcff]/5 px-3 py-1.5 rounded-full border border-[#42fcff]/15 hover:border-[#42fcff]/40">
-            Checkout product ➜
-          </a>
         </div>
 
         <div className="flex flex-col gap-4">

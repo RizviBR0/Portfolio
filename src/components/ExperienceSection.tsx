@@ -11,7 +11,7 @@ const experiences = [
             Frontend Engineer & UI/UX Designer
           </h4>
           <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
-            Arohon{" "}
+            Flexlab Studio{" "}
             <span className="text-[#D7E2EA]/40 font-normal">
               · Dhaka, Bangladesh | Full Time, Remote
             </span>
@@ -22,37 +22,46 @@ const experiences = [
           <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Designed product flows for ride sharing and mobility use cases including bike, car, CNG, intercity, rental and emergency ride.
+              Designed product flows for ride sharing and mobility use cases
+              including bike, car, CNG, intercity, rental and emergency ride.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Created clean UX for booking, scheduling, live trip tracking, trip history, driver verification and safety focused screens.
+              Created clean UX for booking, scheduling, live trip tracking, trip
+              history, driver verification and safety focused screens.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Supported responsive UI implementation and reported UX and functional issues before release.
+              Supported responsive UI implementation and reported UX and
+              functional issues before release.
             </p>
           </div>
         </div>
 
         {/* Tech stack pills */}
         <div className="flex flex-wrap gap-2 mt-6">
-          {["React", "Next.js", "TypeScript", "Tailwind CSS", "ShadCN", "Figma", "Adobe XD"].map(
-            (tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-[#7621B0]/10 border border-[#7621B0]/20 text-[#D7E2EA]/70 hover:bg-[#7621B0]/20 hover:border-[#7621B0]/40 transition-all duration-300"
-              >
-                {tech}
-              </span>
-            )
-          )}
+          {[
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "ShadCN",
+            "Figma",
+            "Adobe XD",
+          ].map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 text-xs font-medium rounded-full bg-[#7621B0]/10 border border-[#7621B0]/20 text-[#D7E2EA]/70 hover:bg-[#7621B0]/20 hover:border-[#7621B0]/40 transition-all duration-300"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
     ),
@@ -77,36 +86,45 @@ const experiences = [
           <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Built responsive web interfaces using React, Next.js, TypeScript, Tailwind CSS and ShadCN UI.
+              Built responsive web interfaces using React, Next.js, TypeScript,
+              Tailwind CSS and ShadCN UI.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Converted product requirements into wireframes, high-fidelity UI designs and frontend interfaces.
+              Converted product requirements into wireframes, high-fidelity UI
+              designs and frontend interfaces.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Worked with developers to maintain design accuracy, usability and smooth implementation.
+              Worked with developers to maintain design accuracy, usability and
+              smooth implementation.
             </p>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-2 mt-6">
-          {["React", "Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI", "Figma", "Wireframing"].map(
-            (tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-[#42fcff]/5 border border-[#42fcff]/15 text-[#D7E2EA]/70 hover:bg-[#42fcff]/10 hover:border-[#42fcff]/30 transition-all duration-300"
-              >
-                {tech}
-              </span>
-            )
-          )}
+          {[
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "ShadCN UI",
+            "Figma",
+            "Wireframing",
+          ].map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 text-xs font-medium rounded-full bg-[#42fcff]/5 border border-[#42fcff]/15 text-[#D7E2EA]/70 hover:bg-[#42fcff]/10 hover:border-[#42fcff]/30 transition-all duration-300"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
     ),
@@ -131,14 +149,16 @@ const experiences = [
           <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Designed user-centered web and mobile interfaces for local and international clients.
+              Designed user-centered web and mobile interfaces for local and
+              international clients.
             </p>
           </div>
 
           <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
             <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
             <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Created wireframes, prototypes and visual designs using Figma and Adobe XD.
+              Created wireframes, prototypes and visual designs using Figma and
+              Adobe XD.
             </p>
           </div>
 
@@ -191,8 +211,8 @@ export function ExperienceSection() {
           className="text-[#D7E2EA]/60 font-light text-center max-w-xl mx-auto mb-10 md:mb-16 leading-relaxed"
           style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.2rem)" }}
         >
-          A journey through the companies and roles that shaped my craft —
-          from pixel-perfect designs to production-ready code.
+          A journey through the companies and roles that shaped my craft — from
+          pixel-perfect designs to production-ready code.
         </p>
       </FadeIn>
 

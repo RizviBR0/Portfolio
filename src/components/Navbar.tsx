@@ -1,134 +1,164 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useLenis } from "lenis/react";
+import { motionEase } from "../lib/motion";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", id: "about" },
+  { label: "Services", id: "services" },
+  { label: "Skills", id: "skills" },
+  { label: "Projects", id: "projects" },
+  { label: "Experience", id: "experience" },
+  { label: "Education", id: "education" },
+  { label: "Contact", id: "contact" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const shouldReduceMotion = useReducedMotion();
+  const lenis = useLenis();
+  const isHome = window.location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 32);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!isHome) return;
+
+    const sections = navLinks
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.2, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [isHome]);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", isOpen);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
     return () => {
-      document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
+      window.removeEventListener("keydown", closeOnEscape);
     };
   }, [isOpen]);
 
-  const handleLinkClick = () => {
+  const hrefFor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
+
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
     setIsOpen(false);
+    if (!isHome) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    if (shouldReduceMotion || !lenis) {
+      target.scrollIntoView({ behavior: shouldReduceMotion ? "auto" : "smooth" });
+    } else {
+      lenis.scrollTo(target, { offset: -72, duration: 0.9 });
+    }
+    window.history.replaceState(null, "", `#${id}`);
   };
 
   return (
     <>
       <motion.nav
-        aria-label="Main navigation"
-        initial={{ opacity: 0, y: -20 }}
+        aria-label="Primary navigation"
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-[#0C0C0C]/80 backdrop-blur-xl shadow-lg shadow-black/20"
-            : "bg-transparent"
-        }`}
+        transition={{ duration: shouldReduceMotion ? 0.01 : 0.65, ease: motionEase }}
+        className={`site-nav ${scrolled || !isHome ? "site-nav--scrolled" : ""}`}
       >
-        <div className="flex justify-between items-center px-6 md:px-10 py-4 md:py-5">
-          {/* Logo / Name */}
-          <a
-            href="#"
-            className="text-white font-bold text-lg md:text-xl tracking-wider uppercase hover:opacity-80 transition-opacity"
-          >
-            Rizvi
+        <div className="site-nav__inner flex h-18 items-center justify-between gap-6">
+          <a href="/" className="brand-mark" aria-label="Sabbir Rizvi portfolio home">
+            <span>Rizvi</span>
           </a>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-8 text-[#D7E2EA] font-medium uppercase tracking-wider text-sm lg:text-base">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="relative hover:text-white transition-colors duration-200 group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#7621B0] to-[#42fcff] group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
+          <div className="site-nav__links hidden items-center lg:flex">
+            {navLinks.map((link) => {
+              const isActive = isHome && activeSection === link.id;
+              return (
+                <a
+                  key={link.id}
+                  href={hrefFor(link.id)}
+                  onClick={(event) => handleLinkClick(event, link.id)}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`nav-link ${isActive ? "nav-link--active" : ""}`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
-          {/* Hamburger Button — Mobile only */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-[6px] z-60 cursor-pointer"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
+            type="button"
+            onClick={() => setIsOpen((open) => !open)}
+            className="menu-toggle lg:hidden"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
-            <motion.span
-              animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="block w-7 h-[2px] bg-white rounded-full origin-center"
-            />
-            <motion.span
-              animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.2 }}
-              className="block w-7 h-[2px] bg-white rounded-full"
-            />
-            <motion.span
-              animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="block w-7 h-[2px] bg-white rounded-full origin-center"
-            />
+            <span className="sr-only">Menu</span>
+            <motion.span animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} />
+            <motion.span animate={isOpen ? { opacity: 0 } : { opacity: 1 }} />
+            <motion.span animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} />
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Full-Screen Overlay Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#0C0C0C]/95 backdrop-blur-2xl flex flex-col items-center justify-center"
+            transition={{ duration: shouldReduceMotion ? 0.01 : 0.25 }}
+            className="mobile-menu"
           >
-            {/* Decorative gradient orbs */}
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#7621B0]/20 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-[#42fcff]/10 rounded-full blur-[80px] pointer-events-none" />
-
-            <nav className="flex flex-col items-center gap-6">
-              {navLinks.map((link, i) => (
+            <div className="mobile-menu__orb mobile-menu__orb--violet" aria-hidden="true" />
+            <div className="mobile-menu__orb mobile-menu__orb--cyan" aria-hidden="true" />
+            <nav aria-label="Mobile navigation" className="flex flex-col items-start gap-1">
+              {navLinks.map((link, index) => (
                 <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  initial={{ opacity: 0, y: 30 }}
+                  key={link.id}
+                  href={hrefFor(link.id)}
+                  onClick={(event) => handleLinkClick(event, link.id)}
+                  initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
                   transition={{
-                    delay: i * 0.07,
-                    duration: 0.4,
-                    ease: [0.25, 0.1, 0.25, 1],
+                    delay: shouldReduceMotion ? 0 : index * 0.035,
+                    duration: shouldReduceMotion ? 0.01 : 0.38,
+                    ease: motionEase,
                   }}
-                  className="text-3xl sm:text-4xl font-bold uppercase tracking-wider text-[#D7E2EA] hover:text-white transition-colors duration-200 relative group"
+                  className="mobile-menu__link"
                 >
+                  <span className="mobile-menu__index">0{index + 1}</span>
                   {link.label}
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-[#7621B0] to-[#42fcff] group-hover:w-full transition-all duration-300" />
                 </motion.a>
               ))}
             </nav>

@@ -12,6 +12,7 @@ export interface GalleryItem {
   title: string;
   src: string;
   caption?: string;
+  alt: string;
 }
 
 export interface ProjectSpecs {
@@ -25,14 +26,20 @@ export interface ProjectSpecs {
 
 export interface ProjectDetail {
   num: string;
+  slug: string;
   name: string;
   tagline: string;
   label: string;
   link: string;
   githubLink: string;
   cardDescription: string;
+  seoDescription: string;
   tags: string[];
   overview: string[];
+  problem: string;
+  solution: string;
+  uxDecisions: string[];
+  architectureNotes: string[];
   techStackDetailed: TechStackGroup;
   keyFeatures: string[];
   challengesList: ChallengeItem[];

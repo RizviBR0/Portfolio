@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Local source downloads converted to optimized WebP assets
+src/assets/decor/*.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,7 +1,7 @@
 {
-  "name": "Rizvi - Frontend Developer & UI/UX Designer",
-  "short_name": "Rizvi Portfolio",
-  "description": "Portfolio of Rizvi — a Frontend Developer and UI/UX Designer specializing in React, Next.js, TypeScript, and modern web experiences with 3D aesthetics.",
+  "name": "Sabbir Rizvi - Product Engineer",
+  "short_name": "Sabbir Rizvi",
+  "description": "Product engineering portfolio featuring accessible SaaS, full-stack development, frontend engineering, and UI/UX product design.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0C0C0C",
@@ -12,11 +12,6 @@
       "src": "/favicon.png",
       "sizes": "48x48",
       "type": "image/png"
-    },
-    {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
     }
   ]
 }

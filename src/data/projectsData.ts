@@ -1,31 +1,49 @@
 import type { ProjectItem } from "../types/project";
 
-import p1 from "../assets/p1/p1-1.png";
-import p2 from "../assets/p1/p1-2.png";
-import p3 from "../assets/p1/p1-3.png";
+import p1 from "../assets/p1/p1-1.webp";
+import p2 from "../assets/p1/p1-2.webp";
+import p3 from "../assets/p1/p1-3.webp";
 
-import p4 from "../assets/p2/p2-1.png";
-import p5 from "../assets/p2/p2-2.png";
-import p6 from "../assets/p2/p2-3.png";
+import p4 from "../assets/p2/p2-1.webp";
+import p5 from "../assets/p2/p2-2.webp";
+import p6 from "../assets/p2/p2-3.webp";
 
-import p7 from "../assets/p3/p3-1.png";
-import p8 from "../assets/p3/p3-2.png";
-import p9 from "../assets/p3/p3-3.png";
+import p7 from "../assets/p3/p3-1.webp";
+import p8 from "../assets/p3/p3-2.webp";
+import p9 from "../assets/p3/p3-3.webp";
 
 export const projects: ProjectItem[] = [
   {
     num: "01",
+    slug: "ideavault",
     name: "IdeaVault",
-    tagline: "Startup Idea Discovery & Collaboration Hub",
-    label: "Startup Idea Discovery & Collaboration Hub",
+    tagline: "Startup Discovery & Collaboration Platform",
+    label: "Startup Discovery & Collaboration Platform",
     link: "https://ideavault-client-kmh1.vercel.app/",
     githubLink: "https://github.com/RizviBR0/ideavault-client",
     cardDescription:
-      "A full-stack startup collaboration platform where innovators can discover ideas, share concepts, discuss opportunities, and manage their own startup ideas through a secure personal dashboard.",
-    tags: ["Next.js", "React", "MongoDB", "Express.js", "Better Auth"],
+      "A full-stack startup collaboration platform built for discovering ideas, discussing concepts, and managing submissions through personalized creator dashboards.",
+    seoDescription:
+      "Explore IdeaVault, a full-stack startup discovery and collaboration platform designed and developed by Sabbir Rizvi with Next.js, Express.js, MongoDB, and Better Auth.",
+    tags: ["Next.js", "React", "Express.js", "MongoDB", "Better Auth"],
     overview: [
       "IdeaVault is a full-stack startup idea discovery and collaboration platform designed for founders, creators, and innovators. Users can publish startup concepts, explore ideas from the community, join discussions, and manage their own submissions from a personalized dashboard.",
       "The platform combines startup discovery, community validation, authentication, CRUD operations, search, filtering, and user interactions within a responsive dark/light interface.",
+    ],
+    problem:
+      "Startup ideas, feedback, and creator updates are often scattered across documents, social posts, and disconnected conversations. That makes promising concepts harder to discover and difficult for creators to manage in one place.",
+    solution:
+      "IdeaVault brings discovery, discussion, authentication, and creator-owned idea management into one responsive platform. Visitors can explore and filter concepts, while authenticated creators can publish, update, and discuss their submissions from a personal dashboard.",
+    uxDecisions: [
+      "Kept search and category filters close to the discovery feed so exploration stays direct.",
+      "Separated public discovery from creator management to keep each flow focused.",
+      "Used consistent design tokens so the interface remains legible in both dark and light themes.",
+    ],
+    architectureNotes: [
+      "Next.js and React power the product interface and authenticated dashboard.",
+      "A separate Express.js API handles protected application operations.",
+      "Better Auth tokens are verified through JWKS before protected API access.",
+      "MongoDB stores ideas, comments, profiles, and ownership relationships.",
     ],
     techStackDetailed: {
       frontend: [
@@ -94,16 +112,19 @@ export const projects: ProjectItem[] = [
         title: "Main Discovery Feed",
         src: p1,
         caption: "Curated community feed featuring debounced search and category filtering",
+        alt: "IdeaVault startup collaboration platform discovery feed designed and developed by Sabbir Rizvi",
       },
       {
         title: "Validation & Discussion",
         src: p2,
         caption: "In-depth concept page with interactive community validation threads",
+        alt: "IdeaVault startup concept discussion interface",
       },
       {
         title: "Personal Founder Dashboard",
         src: p3,
         caption: "User profile & idea management interface with custom analytics",
+        alt: "IdeaVault personalized creator dashboard for managing startup ideas",
       },
     ],
     images: {
@@ -122,17 +143,35 @@ export const projects: ProjectItem[] = [
   },
   {
     num: "02",
+    slug: "woff-space",
     name: "Woff Space",
     tagline: "Instant File, Note & Code Sharing",
     label: "Instant File, Note & Code Sharing",
     link: "https://woff.space",
     githubLink: "https://github.com/RizviBR0/Woff",
     cardDescription:
-      "A zero-friction sharing platform for instantly sending notes, files, images, PDFs, and code through temporary spaces, short room codes, shareable links, or QR codes—without requiring signup.",
-    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "ShadCN/UI"],
+      "A privacy-focused sharing platform for instantly sending files, notes, images, links, and code through temporary spaces using room codes, links, or QR codes.",
+    seoDescription:
+      "Explore Woff Space, a privacy-focused instant file, note, image, link, and code sharing app built by Sabbir Rizvi with Next.js, TypeScript, Supabase, and PostgreSQL.",
+    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS"],
     overview: [
       "Woff Space is a privacy-focused instant sharing platform built to remove unnecessary friction from temporary file and information sharing.",
       "Users can create a temporary space with one click and instantly share notes, files, images, PDFs, or code using a simple four-digit room code, direct link, or QR code. No traditional signup process is required. Anonymous authentication works behind the scenes while maintaining secure ownership and access control.",
+    ],
+    problem:
+      "Temporary sharing often requires accounts, multiple tools, or long setup flows even when someone only needs to send a file, note, image, or code snippet for a short time.",
+    solution:
+      "Woff Space creates a temporary sharing room in one step and makes it available through a short code, direct link, or QR code. Anonymous authentication and database policies protect ownership without adding a traditional sign-up flow.",
+    uxDecisions: [
+      "Made room creation the primary action and kept account mechanics invisible to the user.",
+      "Provided codes, links, and QR access so sharing works naturally across devices.",
+      "Surfaced upload progress, cancellation, retry, and recovery controls only when they are useful.",
+    ],
+    architectureNotes: [
+      "Next.js and TypeScript provide the responsive application shell and sharing workflows.",
+      "Supabase anonymous authentication establishes secure ownership without registration.",
+      "PostgreSQL Row Level Security limits access to permitted room resources.",
+      "Supabase Storage supports files while resumable upload flows handle unreliable connections.",
     ],
     techStackDetailed: {
       frontend: [
@@ -220,16 +259,19 @@ export const projects: ProjectItem[] = [
         title: "Temporary Space Workspace",
         src: p4,
         caption: "Minimalist workspace enabling instant file drops and live note taking",
+        alt: "Woff Space temporary file and note sharing workspace designed and developed by Sabbir Rizvi",
       },
       {
         title: "Multi-Format Sharing Hub",
         src: p5,
         caption: "Rich-text notes, PDF preview, and chunked resumable file upload system",
+        alt: "Woff Space multi-format sharing interface with file upload and notes",
       },
       {
         title: "Code Sharing & Room Codes",
         src: p6,
         caption: "Code editor integration and 4-digit instant room code generation",
+        alt: "Woff Space code sharing interface with temporary room code",
       },
     ],
     images: {
@@ -248,17 +290,35 @@ export const projects: ProjectItem[] = [
   },
   {
     num: "03",
+    slug: "loome",
     name: "Loome",
-    tagline: "Design Discovery & Creative Community Platform",
-    label: "Design Discovery & Creative Community Platform",
+    tagline: "Design Discovery & Creative Community",
+    label: "Design Discovery & Creative Community",
     link: "https://loome-client.vercel.app/",
     githubLink: "https://github.com/RizviBR0/loome-client",
     cardDescription:
-      "A modern design-sharing platform where creatives can publish work, discover visual inspiration, engage with designers, and manage their portfolio through creator and admin dashboards.",
-    tags: ["Next.js", "TypeScript", "MongoDB", "Express.js", "Better Auth"],
+      "A full-stack design-sharing platform where creators can publish work, discover visual inspiration, engage with designers, and manage content through creator and admin dashboards.",
+    seoDescription:
+      "Explore Loome, a full-stack design discovery and creative community platform built by Sabbir Rizvi with Next.js, TypeScript, Express.js, MongoDB, and Better Auth.",
+    tags: ["Next.js", "TypeScript", "Express.js", "MongoDB", "Better Auth"],
     overview: [
       "Loome is a full-stack design discovery and publishing platform built for designers and creative professionals.",
       "It allows creators to publish visual work, explore designs from the community, search and filter inspiration, engage through likes and comments, and manage their published work from a dedicated Studio dashboard. The platform also includes moderation tools and analytics for administrators, creating a complete ecosystem for design publishing, discovery, engagement, and platform management.",
+    ],
+    problem:
+      "Creative work is difficult to explore when discovery tools are shallow and creator publishing, engagement, and moderation live in disconnected systems.",
+    solution:
+      "Loome combines visual discovery, detailed project publishing, community interactions, creator management, and administration in one full-stack platform with role-aware access.",
+    uxDecisions: [
+      "Designed filtering around the attributes creatives actually browse: category, tool, color, recency, likes, and views.",
+      "Created a dedicated Studio area so publishing and portfolio management do not interrupt discovery.",
+      "Balanced image-led editorial layouts with responsive controls for smaller screens.",
+    ],
+    architectureNotes: [
+      "Next.js and TypeScript render discovery, project, Studio, and admin experiences.",
+      "An Express.js API separates product operations from the interface layer.",
+      "Better Auth with JOSE JWT/JWKS verification protects creator and administrator routes.",
+      "MongoDB stores projects, engagement, reports, and role-aware content relationships.",
     ],
     techStackDetailed: {
       frontend: [
@@ -353,16 +413,19 @@ export const projects: ProjectItem[] = [
         title: "Curated Discovery Feed",
         src: p7,
         caption: "High-density editorial visual grid with multi-attribute filtering",
+        alt: "Loome design discovery feed with visual filters designed and developed by Sabbir Rizvi",
       },
       {
         title: "Creator Studio & Showcase",
         src: p8,
         caption: "Project showcase with full palette extraction and engagement metrics",
+        alt: "Loome creator showcase and project publishing interface",
       },
       {
         title: "Admin Analytics & Moderation",
         src: p9,
         caption: "Platform health dashboard with Recharts analytics and moderation queues",
+        alt: "Loome administrator analytics and content moderation dashboard",
       },
     ],
     images: {

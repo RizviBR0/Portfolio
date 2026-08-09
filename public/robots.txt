@@ -6,3 +6,4 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://rizvibr0.me/sitemap.xml
+Host: rizvibr0.me

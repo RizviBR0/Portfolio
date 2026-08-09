@@ -1,223 +1,132 @@
-import { Timeline } from "@/components/ui/timeline";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 
 const experiences = [
   {
-    title: "Apr 2025 – Present",
-    content: (
-      <div>
-        <div className="mb-6">
-          <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
-            Frontend Engineer & UI/UX Designer
-          </h4>
-          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
-            Flexlab Studio{" "}
-            <span className="text-[#D7E2EA]/40 font-normal">
-              · Dhaka, Bangladesh | Full Time, Remote
-            </span>
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Designed product flows for ride sharing and mobility use cases
-              including bike, car, CNG, intercity, rental and emergency ride.
-            </p>
-          </div>
-
-          <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Created clean UX for booking, scheduling, live trip tracking, trip
-              history, driver verification and safety focused screens.
-            </p>
-          </div>
-
-          <div className="group relative pl-5 border-l-2 border-[#7621B0]/30 hover:border-[#7621B0] transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#7621B0] group-hover:shadow-[0_0_8px_#7621B0] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Supported responsive UI implementation and reported UX and
-              functional issues before release.
-            </p>
-          </div>
-        </div>
-
-        {/* Tech stack pills */}
-        <div className="flex flex-wrap gap-2 mt-6">
-          {[
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Tailwind CSS",
-            "ShadCN",
-            "Figma",
-            "Adobe XD",
-          ].map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 text-xs font-medium rounded-full bg-[#7621B0]/10 border border-[#7621B0]/20 text-[#D7E2EA]/70 hover:bg-[#7621B0]/20 hover:border-[#7621B0]/40 transition-all duration-300"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    ),
+    date: "Apr 2025 – Present",
+    dateTime: "2025-04",
+    role: "Frontend Engineer & UI/UX Designer",
+    company: "Flexlab Studio",
+    location: "Dhaka, Bangladesh",
+    type: "Full-time · Remote",
+    accent: "violet",
+    points: [
+      "Designed product flows for ride-sharing and mobility use cases including bike, car, CNG, intercity, rental, and emergency rides.",
+      "Created clear UX for booking, scheduling, live trip tracking, trip history, driver verification, and safety-focused screens.",
+      "Supported responsive UI implementation and reported UX and functional issues before release.",
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Figma", "Adobe XD"],
   },
   {
-    title: "Jan 2022 - Present",
-    content: (
-      <div>
-        <div className="mb-6">
-          <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
-            Frontend Developer, UI/UX Designer & QA Tester
-          </h4>
-          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
-            Flexpoint{" "}
-            <span className="text-[#D7E2EA]/40 font-normal">
-              · United States | Full Time, Remote
-            </span>
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Built responsive web interfaces using React, Next.js, TypeScript,
-              Tailwind CSS and ShadCN UI.
-            </p>
-          </div>
-
-          <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Converted product requirements into wireframes, high-fidelity UI
-              designs and frontend interfaces.
-            </p>
-          </div>
-
-          <div className="group relative pl-5 border-l-2 border-[#42fcff]/20 hover:border-[#42fcff]/60 transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#42fcff]/60 group-hover:shadow-[0_0_8px_#42fcff] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Worked with developers to maintain design accuracy, usability and
-              smooth implementation.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mt-6">
-          {[
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Tailwind CSS",
-            "ShadCN UI",
-            "Figma",
-            "Wireframing",
-          ].map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 text-xs font-medium rounded-full bg-[#42fcff]/5 border border-[#42fcff]/15 text-[#D7E2EA]/70 hover:bg-[#42fcff]/10 hover:border-[#42fcff]/30 transition-all duration-300"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    ),
+    date: "Jan 2022 – Present",
+    dateTime: "2022-01",
+    role: "Frontend Developer, UI/UX Designer & QA Tester",
+    company: "Flexpoint",
+    location: "United States",
+    type: "Full-time · Remote",
+    accent: "cyan",
+    points: [
+      "Built responsive web interfaces using React, Next.js, TypeScript, Tailwind CSS, and shadcn/ui.",
+      "Converted product requirements into wireframes, high-fidelity UI designs, and frontend interfaces.",
+      "Worked with developers to maintain design accuracy, usability, and smooth implementation.",
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Figma", "Wireframing"],
   },
   {
-    title: "Jan 2018 - Jan 2022",
-    content: (
-      <div>
-        <div className="mb-6">
-          <h4 className="text-lg md:text-2xl font-semibold text-white mb-1">
-            UI/UX Designer
-          </h4>
-          <p className="text-sm md:text-base font-medium text-[#42fcff]/80 tracking-wide">
-            ARUX Studio{" "}
-            <span className="text-[#D7E2EA]/40 font-normal">
-              · Dhaka, Bangladesh | Full Time, Remote
-            </span>
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Designed user-centered web and mobile interfaces for local and
-              international clients.
-            </p>
-          </div>
-
-          <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Created wireframes, prototypes and visual designs using Figma and
-              Adobe XD.
-            </p>
-          </div>
-
-          <div className="group relative pl-5 border-l-2 border-[#BBCCD7]/20 hover:border-[#BBCCD7]/50 transition-colors duration-300">
-            <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-[#BBCCD7]/50 group-hover:shadow-[0_0_8px_#BBCCD7] transition-shadow duration-300" />
-            <p className="text-sm md:text-base text-[#D7E2EA]/80 leading-relaxed">
-              Ran usability checks and improved user flows based on feedback.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mt-6">
-          {[
-            "UI/UX Design",
-            "Figma",
-            "Adobe XD",
-            "Prototyping",
-            "Usability Checks",
-          ].map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 text-xs font-medium rounded-full bg-[#BBCCD7]/5 border border-[#BBCCD7]/15 text-[#D7E2EA]/70 hover:bg-[#BBCCD7]/10 hover:border-[#BBCCD7]/30 transition-all duration-300"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    ),
+    date: "Jan 2018 – Jan 2022",
+    dateTime: "2018-01/2022-01",
+    role: "UI/UX Designer",
+    company: "ARUX Studio",
+    location: "Dhaka, Bangladesh",
+    type: "Full-time · Remote",
+    accent: "silver",
+    points: [
+      "Designed user-centered web and mobile interfaces for local and international clients.",
+      "Created wireframes, prototypes, and visual designs using Figma and Adobe XD.",
+      "Ran usability checks and improved user flows based on feedback.",
+    ],
+    technologies: ["UI/UX Design", "Figma", "Adobe XD", "Prototyping", "Usability Testing"],
   },
 ];
 
 export function ExperienceSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 72%", "end 52%"],
+  });
+  const lineProgress = useSpring(scrollYProgress, {
+    stiffness: 95,
+    damping: 24,
+    mass: 0.65,
+  });
+
   return (
-    <section
-      id="experience"
-      className="bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative"
-    >
-      <FadeIn delay={0} y={40}>
-        <h2
-          className="hero-heading font-black uppercase text-center mb-10 sm:mb-14 md:mb-20 leading-none"
-          style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
-        >
-          Experience
-        </h2>
-      </FadeIn>
+    <section id="experience" className="section experience-section" aria-labelledby="experience-title">
+      <div className="site-container">
+        <FadeIn>
+          <p className="eyebrow justify-center">From interaction design to product delivery</p>
+          <h2 id="experience-title" className="section-title section-title--gradient text-center">
+            Experience
+          </h2>
+          <p className="section-intro">
+            Building digital products across UI/UX, frontend engineering,
+            full-stack development, and product delivery.
+          </p>
+        </FadeIn>
 
-      <FadeIn delay={0.15} y={30}>
-        <p
-          className="text-[#D7E2EA]/60 font-light text-center max-w-xl mx-auto mb-10 md:mb-16 leading-relaxed"
-          style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.2rem)" }}
-        >
-          A journey through the companies and roles that shaped my craft — from
-          pixel-perfect designs to production-ready code.
-        </p>
-      </FadeIn>
+        <div ref={timelineRef} className="experience-timeline">
+          <div className="experience-rail" aria-hidden="true">
+            <motion.div
+              className="experience-rail__progress"
+              style={{ scaleY: shouldReduceMotion ? 1 : lineProgress }}
+            />
+          </div>
 
-      <div className="relative w-full overflow-clip">
-        <Timeline data={experiences} />
+          <ol className="experience-list">
+            {experiences.map((experience, index) => (
+              <li key={`${experience.company}-${experience.date}`} className={`experience-item experience-item--${experience.accent}`}>
+                <FadeIn delay={index * 0.08} y={34}>
+                  <article className="experience-card">
+                    <div className="experience-card__date">
+                      <motion.span
+                        className="experience-node"
+                        aria-hidden="true"
+                        initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.35 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, amount: 0.8 }}
+                        transition={{ delay: shouldReduceMotion ? 0 : 0.16, duration: shouldReduceMotion ? 0.01 : 0.5 }}
+                      />
+                      <time dateTime={experience.dateTime}>{experience.date}</time>
+                    </div>
+
+                    <div className="experience-card__body">
+                      <header>
+                        <p className="experience-company">{experience.company}</p>
+                        <h3>{experience.role}</h3>
+                        <div className="experience-context">
+                          <span>{experience.location}</span>
+                          <span aria-hidden="true">·</span>
+                          <span>{experience.type}</span>
+                        </div>
+                      </header>
+
+                      <ul className="experience-points">
+                        {experience.points.map((point) => <li key={point}>{point}</li>)}
+                      </ul>
+
+                      <ul className="tech-chips" aria-label={`${experience.role} technologies and methods`}>
+                        {experience.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+                      </ul>
+                    </div>
+                  </article>
+                </FadeIn>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

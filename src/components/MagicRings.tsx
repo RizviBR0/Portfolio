@@ -128,6 +128,7 @@ export default function MagicRings({
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let renderer: THREE.WebGLRenderer;
     try {
@@ -179,7 +180,8 @@ export default function MagicRings({
     };
 
     const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true });
-    const quad = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), material);
+    const geometry = new THREE.PlaneGeometry(1, 1);
+    const quad = new THREE.Mesh(geometry, material);
     scene.add(quad);
 
     const resize = () => {
@@ -188,8 +190,8 @@ export default function MagicRings({
       // Use lower DPR on small screens to prevent lag
       const maxDpr = w < 768 ? 0.75 : 1;
       const dpr = Math.min(window.devicePixelRatio, maxDpr);
-      renderer.setSize(w, h);
       renderer.setPixelRatio(dpr);
+      renderer.setSize(w, h);
       uniforms.uResolution.value.set(w * dpr, h * dpr);
     };
     resize();
@@ -233,6 +235,7 @@ export default function MagicRings({
     const FRAME_INTERVAL = 1000 / TARGET_FPS;
 
     const animate = (t: number) => {
+      if (reduceMotion && lastRenderTime > 0) return;
       frameId = requestAnimationFrame(animate);
       if (!isVisible) return;
 
@@ -286,9 +289,10 @@ export default function MagicRings({
       mount.removeEventListener('click', onClick);
       mount.removeChild(renderer.domElement);
       renderer.dispose();
+      geometry.dispose();
       material.dispose();
     };
   }, []);
 
-  return <div ref={mountRef} className="w-full h-full" style={blur > 0 ? { filter: `blur(${blur}px)` } : undefined} />;
+  return <div ref={mountRef} aria-hidden="true" className="w-full h-full" style={blur > 0 ? { filter: `blur(${blur}px)` } : undefined} />;
 }

@@ -1,206 +1,119 @@
 <!doctype html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Sabbir Rizvi | Product Engineer &amp; Full-Stack Developer</title>
+    <meta name="description" content="Product Engineer and Full-Stack Developer building accessible SaaS and web apps with React, Next.js, TypeScript, and user-centered UI/UX design." />
+    <meta name="author" content="Sabbir Rizvi" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="theme-color" content="#0C0C0C" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://rizvibr0.me/" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/manifest.json" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://rizvibr0.me/" />
+    <meta property="og:title" content="Sabbir Rizvi | Product Engineer &amp; Full-Stack Developer" />
+    <meta property="og:description" content="Product Engineer and Full-Stack Developer building accessible SaaS and web apps with React, Next.js, TypeScript, and user-centered UI/UX design." />
+    <meta property="og:image" content="https://rizvibr0.me/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Sabbir Rizvi — Product Engineer, Full-Stack, Frontend, and UI/UX" />
+    <meta property="og:site_name" content="Sabbir Rizvi Portfolio" />
+    <meta property="og:locale" content="en_US" />
 
-  <!-- Primary SEO Meta Tags -->
-  <title>Rizvi | Frontend Developer & UI/UX Designer — React, Next.js, TypeScript Portfolio</title>
-  <meta name="title" content="Rizvi | Frontend Developer & UI/UX Designer — React, Next.js, TypeScript Portfolio" />
-  <meta name="description" content="Portfolio of Rizvi — a Frontend Developer and UI/UX Designer with 7+ years of design experience and 3+ years of frontend development. Featuring full-stack applications: IdeaVault (startup discovery platform), Woff Space (instant zero-friction file & note sharing), and Loome (creative design community)." />
-  <meta name="keywords" content="Rizvi, frontend developer, UI/UX designer, React developer, Next.js developer, TypeScript developer, portfolio, startup idea platform, startup collaboration platform, startup community, founder platform, startup idea validation, Next.js full-stack project, React portfolio project, MongoDB web application, instant file sharing, temporary file sharing, no signup file sharing, online note sharing, code sharing platform, anonymous file sharing, QR file sharing, Woff Space, Next.js Supabase project, design sharing platform, designer community, creative portfolio platform, design inspiration website, UI UX design community, design discovery platform, full-stack design application, Tailwind CSS, Supabase, Better Auth" />
-  <meta name="author" content="Rizvi" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="googlebot" content="index, follow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sabbir Rizvi | Product Engineer &amp; Full-Stack Developer" />
+    <meta name="twitter:description" content="Accessible SaaS and web products built with React, Next.js, TypeScript, and thoughtful UI/UX." />
+    <meta name="twitter:image" content="https://rizvibr0.me/og-image.png" />
+    <meta name="twitter:image:alt" content="Sabbir Rizvi — Product Engineer, Full-Stack, Frontend, and UI/UX" />
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://rizvibr0.me/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://admin.linquo.app" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
-  <link rel="apple-touch-icon" sizes="48x48" href="/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.png" />
-
-  <!-- Theme & Manifest -->
-  <meta name="theme-color" content="#0C0C0C" />
-  <meta name="msapplication-TileColor" content="#0C0C0C" />
-  <link rel="manifest" href="/manifest.json" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://rizvibr0.me/" />
-  <meta property="og:title" content="Rizvi | Frontend Developer & UI/UX Designer" />
-  <meta property="og:description" content="Portfolio of Rizvi — Frontend Developer & UI/UX Designer. Explore featured full-stack projects: IdeaVault, Woff Space, and Loome." />
-  <meta property="og:image" content="https://rizvibr0.me/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Rizvi — Frontend Developer & UI/UX Designer Portfolio" />
-  <meta property="og:site_name" content="Rizvi Portfolio" />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://rizvibr0.me/" />
-  <meta name="twitter:title" content="Rizvi | Frontend Developer & UI/UX Designer" />
-  <meta name="twitter:description" content="Portfolio of Rizvi — Frontend Developer and UI/UX Designer. Specializing in React, Next.js, TypeScript, and full-stack web applications." />
-  <meta name="twitter:image" content="https://rizvibr0.me/og-image.png" />
-  <meta name="twitter:image:alt" content="Rizvi — Frontend Developer & UI/UX Designer Portfolio" />
-
-  <!-- Geo & Location Tags -->
-  <meta name="geo.region" content="BD-13" />
-  <meta name="geo.placename" content="Dhaka, Bangladesh" />
-
-  <!-- Preconnect to External Resources -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://admin.linquo.app" />
-
-  <!-- JSON-LD Structured Data: Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Rizvi",
-    "url": "https://rizvibr0.me",
-    "image": "https://rizvibr0.me/og-image.png",
-    "jobTitle": "Frontend Developer & UI/UX Designer",
-    "description": "Frontend Developer and UI/UX Designer with 7+ years of design experience and 3+ years of frontend development, specializing in React, Next.js, TypeScript, and full-stack web architectures.",
-    "email": "sabbirh9990@gmail.com",
-    "telephone": "+8801815507808",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Dhaka",
-      "addressCountry": "BD"
-    },
-    "sameAs": [
-      "https://linkedin.com/in/sabbirrizvi",
-      "https://github.com/rizvibr0",
-      "https://facebook.com/rizvibr0"
-    ],
-    "knowsAbout": [
-      "React.js", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS",
-      "UI/UX Design", "Figma", "Adobe XD", "MongoDB", "Supabase",
-      "Firebase", "Express.js", "Better Auth", "JWT", "PostgreSQL",
-      "Framer Motion", "SaaS Development", "Full-Stack Web Applications",
-      "Startup Discovery Platforms", "Instant File Sharing", "Design Discovery Platforms"
-    ],
-    "alumniOf": {
-      "@type": "Organization",
-      "name": "Arohon"
-    },
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Arohon"
-    }
-  }
-  </script>
-
-  <!-- JSON-LD Structured Data: WebSite with SearchAction -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Rizvi Portfolio",
-    "url": "https://rizvibr0.me",
-    "description": "Portfolio of Rizvi — Frontend Developer and UI/UX Designer specializing in React, Next.js, and modern web applications."
-  }
-  </script>
-
-  <!-- JSON-LD Structured Data: ProfilePage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Rizvi",
-      "url": "https://rizvibr0.me"
-    },
-    "dateCreated": "2024-01-01T00:00:00+06:00",
-    "dateModified": "2026-06-14T00:00:00+06:00"
-  }
-  </script>
-
-  <!-- JSON-LD Structured Data: ItemList (Projects) with Rich SEO Keywords -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Featured Projects by Rizvi",
-    "description": "Full-stack web applications and platforms created by Rizvi.",
-    "itemListElement": [
+    <script type="application/ld+json">
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "IdeaVault — Startup Idea Discovery & Collaboration Hub",
-        "url": "https://ideavault-client-kmh1.vercel.app/",
-        "description": "A full-stack startup collaboration platform where innovators can discover ideas, share concepts, discuss opportunities, and manage their own startup ideas through a secure personal dashboard.",
-        "keywords": "startup idea platform, startup collaboration platform, startup community, founder platform, startup idea validation, Next.js full-stack project, React portfolio project, MongoDB web application"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Woff Space — Instant File, Note & Code Sharing",
-        "url": "https://woff.space",
-        "description": "A zero-friction sharing platform for instantly sending notes, files, images, PDFs, and code through temporary spaces, short room codes, shareable links, or QR codes—without requiring signup.",
-        "keywords": "instant file sharing, temporary file sharing, no signup file sharing, online note sharing, code sharing platform, anonymous file sharing, QR file sharing, Woff Space, Next.js Supabase project"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Loome — Design Discovery & Creative Community Platform",
-        "url": "https://loome-client.vercel.app/",
-        "description": "A modern design-sharing platform where creatives can publish work, discover visual inspiration, engage with designers, and manage their portfolio through creator and admin dashboards.",
-        "keywords": "design sharing platform, designer community, creative portfolio platform, design inspiration website, UI UX design community, design discovery platform, Next.js portfolio project, full-stack design application"
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://rizvibr0.me/#person",
+            "name": "Sabbir Rizvi",
+            "url": "https://rizvibr0.me/",
+            "image": "https://rizvibr0.me/og-image.png",
+            "jobTitle": "Product Engineer",
+            "description": "Product Engineer and Full-Stack Developer building accessible SaaS and web applications with React, Next.js, TypeScript, and user-centered UI/UX design.",
+            "email": "mailto:sabbirh9990@gmail.com",
+            "telephone": "+8801815507808",
+            "sameAs": [
+              "https://github.com/rizvibr0",
+              "https://linkedin.com/in/sabbirrizvi",
+              "https://facebook.com/rizvibr0"
+            ],
+            "hasOccupation": [
+              { "@type": "Occupation", "name": "Product Engineer" },
+              { "@type": "Occupation", "name": "Full-Stack Developer" },
+              { "@type": "Occupation", "name": "Frontend Developer" },
+              { "@type": "Occupation", "name": "UI/UX Designer" }
+            ],
+            "knowsAbout": [
+              "React", "Next.js", "TypeScript", "Node.js", "Express.js",
+              "PostgreSQL", "MongoDB", "Supabase", "SaaS development",
+              "Accessible web applications", "Product design", "Design systems"
+            ]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://rizvibr0.me/#profile",
+            "url": "https://rizvibr0.me/",
+            "name": "Sabbir Rizvi — Product Engineer Portfolio",
+            "description": "Product engineering portfolio featuring full-stack development, frontend engineering, and UI/UX product design.",
+            "mainEntity": { "@id": "https://rizvibr0.me/#person" },
+            "dateModified": "2026-08-09"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://rizvibr0.me/#website",
+            "url": "https://rizvibr0.me/",
+            "name": "Sabbir Rizvi Portfolio",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://rizvibr0.me/#person" }
+          },
+          {
+            "@type": "ItemList",
+            "name": "Selected product engineering case studies",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "IdeaVault", "url": "https://rizvibr0.me/projects/ideavault" },
+              { "@type": "ListItem", "position": 2, "name": "Woff Space", "url": "https://rizvibr0.me/projects/woff-space" },
+              { "@type": "ListItem", "position": 3, "name": "Loome", "url": "https://rizvibr0.me/projects/loome" }
+            ]
+          }
+        ]
       }
-    ]
-  }
-  </script>
-
-</head>
-
-<body>
-  <div id="root"></div>
-  <div id="modal-root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-  <script id="linquo" async="true" src="https://admin.linquo.app/widget.js?id=0cf23668-bd6f-455a-b667-9995ef732465"></script>
-
-  <!-- Noscript fallback for SEO crawlers that don't execute JS -->
-  <noscript>
-    <div style="background:#0C0C0C;color:#D7E2EA;padding:40px;font-family:sans-serif;max-width:800px;margin:0 auto;">
-      <h1>Rizvi — Frontend Developer & UI/UX Designer</h1>
-      <p>Frontend Developer and UI/UX Designer with 7+ years of design experience and 3+ years of frontend development. Specializing in React, Next.js, TypeScript, Tailwind CSS, and immersive full-stack web applications.</p>
-      <h2>Services</h2>
-      <ul>
-        <li>AI-Powered Web Application Development</li>
-        <li>Custom SaaS & Collaborative Dashboard Design</li>
-        <li>Modern UI/UX Architecture & Prototyping</li>
-        <li>E-Commerce & Digital Experience Platforms</li>
-        <li>Full-Stack Development & Cloud Integration</li>
-      </ul>
-      <h2>Skills</h2>
-      <p>React.js, Next.js, TypeScript, JavaScript, Tailwind CSS, ShadCN UI, HTML/CSS, Supabase, Express.js, MongoDB, Firebase, PostgreSQL, UI/UX Design, Figma, Adobe XD, Better Auth, JWT</p>
-      <h2>Featured Projects</h2>
-      <ul>
-        <li>
-          <strong><a href="https://ideavault-client-kmh1.vercel.app/">IdeaVault — Startup Idea Discovery & Collaboration Hub</a></strong>
-          <p>A full-stack startup collaboration platform where innovators can discover ideas, share concepts, discuss opportunities, and manage their own startup ideas through a secure personal dashboard.</p>
-        </li>
-        <li>
-          <strong><a href="https://woff.space">Woff Space — Instant File, Note & Code Sharing</a></strong>
-          <p>A zero-friction sharing platform for instantly sending notes, files, images, PDFs, and code through temporary spaces, short room codes, shareable links, or QR codes—without requiring signup.</p>
-        </li>
-        <li>
-          <strong><a href="https://loome-client.vercel.app/">Loome — Design Discovery & Creative Community Platform</a></strong>
-          <p>A modern design-sharing platform where creatives can publish work, discover visual inspiration, engage with designers, and manage their portfolio through creator and admin dashboards.</p>
-        </li>
-      </ul>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:sabbirh9990@gmail.com">sabbirh9990@gmail.com</a> | Phone: <a href="tel:+8801815507808">+880 1815-507808</a></p>
-      <p><a href="https://linkedin.com/in/sabbirrizvi">LinkedIn</a> | <a href="https://github.com/rizvibr0">GitHub</a></p>
-    </div>
-  </noscript>
-</body>
-
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script id="linquo" async src="https://admin.linquo.app/widget.js?id=0cf23668-bd6f-455a-b667-9995ef732465"></script>
+    <noscript>
+      <main style="background:#0C0C0C;color:#D7E2EA;padding:40px;font-family:system-ui;max-width:800px;margin:auto">
+        <h1>Sabbir Rizvi — Product Engineer &amp; Full-Stack Developer</h1>
+        <p>Product Engineer building accessible SaaS and web applications with React, Next.js, TypeScript, Node.js, and user-centered UI/UX design.</p>
+        <h2>Selected case studies</h2>
+        <ul>
+          <li><a href="/projects/ideavault">IdeaVault startup collaboration platform</a></li>
+          <li><a href="/projects/woff-space">Woff Space instant file and note sharing app</a></li>
+          <li><a href="/projects/loome">Loome design discovery platform</a></li>
+        </ul>
+        <p><a href="mailto:sabbirh9990@gmail.com">Contact Sabbir Rizvi</a></p>
+      </main>
+    </noscript>
+  </body>
 </html>

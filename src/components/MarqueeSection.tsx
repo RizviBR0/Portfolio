@@ -1,85 +1,157 @@
-import { useEffect, useRef, useState } from "react";
-import p1 from "../assets/projects/1.png";
-import p2 from "../assets/projects/2.png";
-import p3 from "../assets/projects/3.png";
-import p4 from "../assets/projects/4.png";
-import p5 from "../assets/projects/5.png";
-import p6 from "../assets/projects/6.png";
-import p7 from "../assets/projects/7.png";
-import p8 from "../assets/projects/8.png";
-import p9 from "../assets/projects/9.png";
-import p10 from "../assets/projects/10.png";
-import p11 from "../assets/projects/11.png";
-import p12 from "../assets/projects/12.png";
-import p13 from "../assets/projects/13.png";
-import p14 from "../assets/projects/14.png";
-import p15 from "../assets/projects/15.png";
-import p16 from "../assets/projects/16.png";
-import p17 from "../assets/projects/17.png";
-import p18 from "../assets/projects/18.png";
-import p19 from "../assets/projects/19.png";
+import { useLayoutEffect, useRef, useState } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import type { MotionValue } from "framer-motion";
+import p1 from "../assets/projects/1.webp";
+import p2 from "../assets/projects/2.webp";
+import p3 from "../assets/projects/3.webp";
+import p4 from "../assets/projects/4.webp";
+import p5 from "../assets/projects/5.webp";
+import p6 from "../assets/projects/6.webp";
+import p7 from "../assets/projects/7.webp";
+import p8 from "../assets/projects/8.webp";
+import p9 from "../assets/projects/9.webp";
+import p10 from "../assets/projects/10.webp";
+import p11 from "../assets/projects/11.webp";
+import p12 from "../assets/projects/12.webp";
+import p13 from "../assets/projects/13.webp";
+import p14 from "../assets/projects/14.webp";
+import p15 from "../assets/projects/15.webp";
+import p16 from "../assets/projects/16.webp";
+import p17 from "../assets/projects/17.webp";
+import p18 from "../assets/projects/18.webp";
+import p19 from "../assets/projects/19.webp";
 
-const row1Images = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10];
-const row2Images = [p11, p12, p13, p14, p15, p16, p17, p18, p19, p1];
+const firstRow = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10];
+const secondRow = [p11, p12, p13, p14, p15, p16, p17, p18, p19];
+
+type ReelMetrics = {
+  viewport: number;
+  firstRow: number;
+  secondRow: number;
+};
+
+function ImageRow({
+  images,
+  rowRef,
+  x,
+  position,
+}: {
+  images: string[];
+  rowRef: React.RefObject<HTMLDivElement | null>;
+  x: MotionValue<number>;
+  position: "top" | "bottom";
+}) {
+  return (
+    <motion.div
+      ref={rowRef}
+      className={`marquee-track marquee-track--${position}`}
+      style={{ x }}
+    >
+      {images.map((src, index) => (
+        <figure className="marquee-card" key={src}>
+          <img
+            src={src}
+            alt=""
+            loading={index < 2 ? "eager" : "lazy"}
+            decoding="async"
+            draggable={false}
+          />
+        </figure>
+      ))}
+    </motion.div>
+  );
+}
 
 export function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const firstRowRef = useRef<HTMLDivElement>(null);
+  const secondRowRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [metrics, setMetrics] = useState<ReelMetrics>({
+    viewport: 0,
+    firstRow: 0,
+    secondRow: 0,
+  });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const sectionTop = sectionRef.current.offsetTop;
-      const calculatedOffset =
-        (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-      setOffset(calculatedOffset);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 82,
+    damping: 26,
+    mass: 0.42,
+  });
+  const reelProgress = useTransform(smoothProgress, (progress) => {
+    if (progress <= 0.85) return (progress / 0.85) * 0.8;
+    const closingProgress = (progress - 0.85) / 0.15;
+    return 0.8 + 0.2 * Math.pow(closingProgress, 4);
+  });
+
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    const firstTrack = firstRowRef.current;
+    const secondTrack = secondRowRef.current;
+    if (!viewport || !firstTrack || !secondTrack) return;
+
+    const measure = () => {
+      setMetrics({
+        viewport: viewport.clientWidth,
+        firstRow: firstTrack.scrollWidth,
+        secondRow: secondTrack.scrollWidth,
+      });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(viewport);
+    observer.observe(firstTrack);
+    observer.observe(secondTrack);
+    return () => observer.disconnect();
   }, []);
 
-  const row1Tripled = [...row1Images, ...row1Images, ...row1Images];
-  const row2Tripled = [...row2Images, ...row2Images, ...row2Images];
-
+  const firstRowX = useTransform(
+    reelProgress,
+    [0, 1],
+    [metrics.viewport * 0.92, -metrics.firstRow + metrics.viewport * 0.82],
+  );
+  const secondRowX = useTransform(
+    reelProgress,
+    [0, 1],
+    [metrics.viewport * 1.14, -metrics.secondRow + metrics.viewport * 0.82],
+  );
   return (
     <section
       ref={sectionRef}
-      aria-label="Project Preview Showcase"
-      className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
+      className="project-marquee"
+      data-reduced-motion={shouldReduceMotion ? "true" : undefined}
+      aria-hidden="true"
     >
-      <div
-        className="flex gap-3 will-change-transform"
-        style={{ transform: `translate3d(${offset - 200}px, 0, 0)` }}
-      >
-        {row1Tripled.map((src, i) => (
-          <img
-            key={`row1-${i}`}
-            src={src}
-            alt="Project Preview"
-            decoding="async"
-            className="w-105 h-67.5 rounded-2xl object-top object-cover shrink-0"
-          />
-        ))}
-      </div>
+      <div ref={viewportRef} className="project-marquee__sticky">
+        <div className="project-marquee__wash project-marquee__wash--violet" />
+        <div className="project-marquee__wash project-marquee__wash--cyan" />
 
-      <div
-        className="flex gap-3 will-change-transform"
-        style={{ transform: `translate3d(${-(offset - 200)}px, 0, 0)` }}
-      >
-        {row2Tripled.map((src, i) => (
-          <img
-            key={`row2-${i}`}
-            src={src}
-            alt="Project Preview"
-            decoding="async"
-            className="w-105 h-67.5 rounded-2xl object-top object-cover shrink-0"
-          />
-        ))}
+        <div className="project-marquee__meta">
+          <p>Selected interface work</p>
+          <p>Scroll to explore</p>
+        </div>
+
+        <div className="project-marquee__reel">
+          <div className="marquee-row">
+            <ImageRow images={firstRow} rowRef={firstRowRef} x={firstRowX} position="top" />
+          </div>
+          <div className="marquee-row">
+            <ImageRow images={secondRow} rowRef={secondRowRef} x={secondRowX} position="bottom" />
+          </div>
+        </div>
+
       </div>
     </section>
   );

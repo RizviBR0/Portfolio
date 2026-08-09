@@ -1,4 +1,11 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/projects/ideavault", "destination": "/projects/ideavault/index.html" },
+    { "source": "/projects/woff-space", "destination": "/projects/woff-space/index.html" },
+    { "source": "/projects/loome", "destination": "/projects/loome/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

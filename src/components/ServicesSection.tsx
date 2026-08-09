@@ -1,89 +1,66 @@
+import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
-import BlurText from "./BlurText";
 
 const services = [
   {
     num: "01",
-    title: "AI-Powered Web Application Development",
-    desc: "Building intelligent web applications that leverage AI to automate tasks, generate content, or provide data-driven insights.",
+    title: "Product Engineering & Full-Stack Development",
+    description:
+      "End-to-end development of production-ready web products, from frontend architecture and APIs to databases, authentication, and deployment.",
   },
   {
     num: "02",
-    title: "Custom SaaS & Collaborative Dashboard Design",
-    desc: "Designing intuitive dashboards and admin panels that streamline workflows and enhance team productivity.",
+    title: "Frontend Engineering for SaaS",
+    description:
+      "Fast, accessible, and responsive SaaS interfaces built with React, Next.js, TypeScript, and scalable component architecture.",
   },
   {
     num: "03",
-    title: "Modern UI/UX Makeovers (Glassmorphism & 3D Styling)",
-    desc: "Transforming interfaces with trending aesthetics—glossy glassmorphism, floating 3D elements, and micro-interactions—to create immersive user experiences.",
+    title: "UI/UX & Product Design",
+    description:
+      "User flows, wireframes, prototypes, design systems, and intuitive interfaces that translate product goals into usable experiences.",
   },
   {
     num: "04",
-    title: "E-Commerce & Affiliate Platform Development",
-    desc: "Building scalable online stores and affiliate networks with seamless user journeys, secure transactions, and performance-driven architecture.",
+    title: "AI-Enabled Web Application Development",
+    description:
+      "Practical AI features and intelligent workflows integrated into modern web products to automate tasks and improve user experiences.",
   },
   {
     num: "05",
-    title: "Interactive Prototyping & Developer-Ready Handoffs",
-    desc: "Crafting detailed, high-fidelity prototypes that mimic final product behavior, coupled with clean, organized documentation for engineering teams.",
+    title: "Design Systems & Interactive Prototyping",
+    description:
+      "Reusable design systems and high-fidelity prototypes that reduce handoff friction and keep design and implementation aligned.",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section
-      id="services"
-      className="bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-10"
-    >
-      <FadeIn delay={0} y={40}>
-        <h2
-          className="font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 leading-none"
-          style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
-        >
-          Services
-        </h2>
-      </FadeIn>
+    <section id="services" className="section services-section" aria-labelledby="services-title">
+      <div className="site-container">
+        <FadeIn>
+          <p className="eyebrow eyebrow--dark justify-center">How I shape and ship products</p>
+          <h2 id="services-title" className="section-title text-center text-[#0C0C0C]">
+            Services
+          </h2>
+        </FadeIn>
 
-      <div className="max-w-5xl mx-auto flex flex-col">
-        {services.map((service, i) => (
-          <FadeIn
-            key={service.num}
-            delay={i * 0.1}
-            y={30}
-            className="flex flex-col sm:flex-row items-start sm:items-center py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] last:border-b-0 gap-6 sm:gap-10 md:gap-16"
-          >
-            <div
-              className="font-black leading-none shrink-0 text-center"
-              style={{
-                fontSize: "clamp(3rem, 10vw, 140px)",
-                minWidth: "clamp(80px, 14vw, 200px)",
-              }}
-            >
-              {service.num}
-            </div>
-
-            <div className="flex flex-col gap-2 sm:gap-4">
-              <BlurText
-                text={service.title}
-                delay={60}
-                animateBy="letters"
-                direction="top"
-                stepDuration={0.3}
-                className="font-medium uppercase leading-tight"
-                style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)" }}
-              />
-              <BlurText
-                text={service.desc}
-                delay={15}
-                animateBy="words"
-                direction="bottom"
-                stepDuration={0.3}
-                className="font-light leading-relaxed max-w-2xl opacity-60"
-                style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.25rem)" }}
-              />
-            </div>
-          </FadeIn>
-        ))}
+        <div className="services-list">
+          {services.map((service, index) => (
+            <FadeIn key={service.num} delay={index * 0.055} y={22}>
+              <article className="service-row">
+                <span className="service-number" aria-hidden="true">
+                  {service.num}
+                </span>
+                <div className="service-copy">
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                </div>
+                <ArrowUpRight className="service-icon" aria-hidden="true" />
+              </article>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

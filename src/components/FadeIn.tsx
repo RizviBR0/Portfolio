@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
+import { motionEase } from "../lib/motion";
 
 interface FadeInProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
@@ -19,12 +20,23 @@ export function FadeIn({
   className = "",
   ...props
 }: FadeInProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, x, y }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "50px", amount: 0 }}
-      transition={{ delay, duration, ease: [0.25, 0.1, 0.25, 1] }}
+      initial={{
+        opacity: 0,
+        x: shouldReduceMotion ? 0 : x,
+        y: shouldReduceMotion ? 0 : y,
+        scale: shouldReduceMotion ? 1 : 0.985,
+      }}
+      whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "0px 0px -9%", amount: 0.08 }}
+      transition={{
+        delay: shouldReduceMotion ? 0 : delay,
+        duration: shouldReduceMotion ? 0.01 : Math.max(duration, 0.78),
+        ease: motionEase,
+      }}
       className={className}
       {...props}
     >

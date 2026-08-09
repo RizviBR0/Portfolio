@@ -8,7 +8,7 @@ export const profileLinks = {
   linkedin: "https://linkedin.com/in/sabbirrizvi",
   facebook: "https://facebook.com/rizvibr0",
   resume:
-    "https://drive.google.com/uc?export=download&id=1BRH4qIbeqEdAFotUwfJbpzycaFPRIbsP",
+    "https://drive.google.com/uc?export=download&id=1J2_CABzJXbYihhgVVKg6fpMXYCKVH3Dd",
 } as const;
 
 export const homeMeta = {

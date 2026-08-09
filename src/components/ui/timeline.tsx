@@ -33,7 +33,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full font-sans"
+      className="w-full font-sans relative"
       ref={containerRef}
     >
       <div ref={ref} className="relative max-w-5xl mx-auto pb-20">
@@ -70,7 +70,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-[#7621B0] via-[#42fcff] to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-0 top-0 w-[2px] bg-gradient-to-t from-[#7621B0] via-[#42fcff] to-transparent from-[0%] via-[10%] rounded-full"
           />
         </div>
       </div>

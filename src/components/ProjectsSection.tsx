@@ -1,233 +1,220 @@
-import { useRef, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
-
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { StickyCard002 } from "./ui/skiper17";
 import { LiveProjectButton } from "./LiveProjectButton";
 import { FadeIn } from "./FadeIn";
-import { ProjectDetailModal, type ProjectDetail } from "./ProjectDetailModal";
-import { Magnet } from "./Magnet";
+import { openProjectDetailsModal } from "../lib/modalEvents";
+import { projects } from "../data/projectsData";
+import type { ProjectItem } from "../types/project";
 
-import p1 from "../assets/p1/p1-1.png";
-import p2 from "../assets/p1/p1-2.png";
-import p3 from "../assets/p1/p1-3.png";
-
-import p4 from "../assets/p2/p2-1.png";
-import p5 from "../assets/p2/p2-2.png";
-import p6 from "../assets/p2/p2-3.png";
-
-import p7 from "../assets/p3/p3-1.png";
-import p8 from "../assets/p3/p3-2.png";
-import p9 from "../assets/p3/p3-3.png";
-
-const projects: (ProjectDetail & {
-  label: string;
-  images: { leftTop: string; leftBottom: string; right: string };
-})[] = [
-  {
-    num: "01",
-    label: "Project",
-    name: "IdeaVault - Startup Idea Hub",
-    link: "https://ideavault-client-kmh1.vercel.app/",
-    githubLink: "https://github.com/RizviBR0/ideavault-client.git",
-    techStack: ["Next.js", "React", "Tailwind CSS", "Better-Auth", "MongoDB", "Express.js"],
-    description:
-      "IdeaVault is a full-stack startup incubator and collaboration portal that empowers innovators to seed startup concepts, gather validation from the community, and participate in detailed discussions, wrapped in a polished light/dark theme system.",
-    challenges:
-      "Implementing secure multi-method session control via Better-Auth and database adapters while maintaining low-latency client-side authentication checks. Managing debounced query search and instant category filter state changes smoothly.",
-    improvements:
-      "Adding interactive creator analytics dashboards, AI-powered startup category matching, real-time collaboration invites, and advanced discussion moderation filters.",
-    images: {
-      leftTop: p2,
-      leftBottom: p3,
-      right: p1,
-    },
-  },
-  {
-    num: "02",
-    label: "Project",
-    name: "Woff Space - Sharing Portal",
-    link: "https://woff.space",
-    githubLink: "https://github.com/RizviBR0/Woff.git",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI", "Supabase", "Figma"],
-    description:
-      "Woff Space is a minimal, zero-friction content sharing platform allowing users to instantly create temporary spaces to drop files, images, PDFs, notes, or code blocks via short room codes or links—no sign-up required.",
-    challenges:
-      "Managing transient sessions using device-based cookie auth, integrating Radix UI primitives and custom drag-and-drop file upload workflows, and implementing Supabase RLS storage rules securely.",
-    improvements:
-      "Adding end-to-end client-side file encryption, setting custom self-destruct timers for shareable rooms, and integrating multi-host speed optimized storage servers.",
-    images: {
-      leftTop: p6,
-      leftBottom: p5,
-      right: p4,
-    },
-  },
-  {
-    num: "03",
-    label: "Project",
-    name: "Suncart - E-Commerce Showcase",
-    link: "https://suncart-pink.vercel.app",
-    githubLink: "https://github.com/RizviBR0/suncart.git",
-    techStack: ["Next.js", "React", "Tailwind CSS", "HeroUI", "Better Auth", "MongoDB"],
-    description:
-      "Suncart is a modern, responsive product showcase platform featuring secure multi-method credential and Google SSO authentication, interactive catalogs, ratings reviews, and high-fidelity page loader skeletons.",
-    challenges:
-      "Configuring dynamic product page routes with server components and MongoDB fetching, preventing layout shifts during auth checks with HeroUI transition skeletons, and mapping notification alerts.",
-    improvements:
-      "Integrating fully functional payment gateways, shopping cart state management with client synchronization, and automated receipt generation engines.",
-    images: {
-      leftTop: p9,
-      leftBottom: p7,
-      right: p8,
-    },
-  },
-];
-
-interface ProjectCardProps {
-  project: (typeof projects)[0];
-  index: number;
-  progress: MotionValue<number>;
-  targetScale: number;
-  onViewDetails: (project: (typeof projects)[0]) => void;
+interface SingleProjectCardProps {
+  project: ProjectItem;
 }
 
-function ProjectCard({
-  project,
-  index,
-  progress,
-  targetScale,
-  onViewDetails,
-}: ProjectCardProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+function SingleProjectCard({ project }: SingleProjectCardProps) {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const totalGalleryImages = project.gallery.length;
 
-  const scale = useTransform(progress, [index * 0.25, 1], [1, targetScale]);
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setActiveImageIndex((prev) => (prev - 1 + totalGalleryImages) % totalGalleryImages);
+  };
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setActiveImageIndex((prev) => (prev + 1) % totalGalleryImages);
+  };
+
+  const handleDragEnd = (_: unknown, info: { offset: { x: number }; velocity: { x: number } }) => {
+    const swipeThreshold = 40;
+    if (info.offset.x < -swipeThreshold || info.velocity.x < -200) {
+      handleNext();
+    } else if (info.offset.x > swipeThreshold || info.velocity.x > 200) {
+      handlePrev();
+    }
+  };
+
+  const currentGalleryItem = project.gallery[activeImageIndex] || {
+    title: project.name,
+    src: project.images.right,
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className="h-[85vh] sm:h-[95vh] sticky w-full"
-      style={{ top: `calc(6rem + ${index * 28}px)` }}
-    >
-      <motion.div
-        style={{ scale, transformOrigin: "top center" }}
-        className="w-full h-full bg-linear-to-b from-[#212121]  to-[#17141e] shadow-2xl shadow-blue-400/30 rounded-3xl sm:rounded-4xl md:rounded-[40px] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 md:gap-8 overflow-hidden relative"
-      >
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div className="flex items-center gap-4 sm:gap-6">
-            <span
-              className="font-black leading-none text-white"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 80px)" }}
-            >
-              {project.num}
+    <div className="w-full h-full bg-[#111017] border border-white/15 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.9)] rounded-3xl p-5 sm:p-7 md:p-9 flex flex-col justify-between overflow-hidden relative group">
+      {/* Background Ambient Glows */}
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#7621B0]/25 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#42fcff]/15 blur-[140px] rounded-full pointer-events-none" />
+
+      {/* Card Header: Number, Name, CTA Buttons */}
+      <div className="relative z-20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0 border-b border-white/10 pb-4">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <span
+            className="font-black leading-none bg-gradient-to-r from-[#42fcff] via-white to-[#7621B0] bg-clip-text text-transparent"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 48px)" }}
+          >
+            {project.num}
+          </span>
+          <div className="flex flex-col">
+            <span className="text-[#42fcff] uppercase tracking-widest text-[10px] sm:text-xs font-mono font-semibold">
+              PROJECT • {project.label}
             </span>
-            <div className="flex flex-col">
-              <span className="text-[#D7E2EA]/60 uppercase tracking-widest text-xs sm:text-sm font-medium">
-                {project.label}
-              </span>
-              <h3
-                className="font-medium uppercase leading-tight text-white"
-                style={{ fontSize: "clamp(1.2rem, 3vw, 2.5rem)" }}
-              >
-                {project.name}
-              </h3>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Magnet
-              padding={30}
-              magnetStrength={30}
-              activeTransition="transform 0.2s ease-out"
-              inactiveTransition="transform 0.4s ease-in-out"
+            <h3
+              className="font-extrabold uppercase leading-tight text-white tracking-tight"
+              style={{ fontSize: "clamp(1.2rem, 2vw, 1.75rem)" }}
             >
-              <button
-                onClick={() => onViewDetails(project)}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-[#7621B0]/50 text-[#D7E2EA] font-medium uppercase tracking-widest px-5 py-2.5 sm:px-8 sm:py-3 md:px-12 md:py-4 text-xs sm:text-sm md:text-base hover:bg-[#7621B0]/15 hover:border-[#7621B0] transition-colors cursor-pointer"
-              >
-                View Details
-              </button>
-            </Magnet>
-            <LiveProjectButton link={project.link} />
+              {project.name}
+            </h3>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 flex-1 min-h-0">
-          <div className="hidden sm:flex flex-col gap-4 w-full sm:w-[40%] sm:h-full flex-1 min-h-0">
-            <img
-              src={project.images.leftTop}
-              alt={`${project.name} preview 1`}
-              className="w-full object-cover rounded-[16px] sm:rounded-[20px] md:rounded-[24px] shrink-0"
-              style={{ height: "clamp(130px, 16vw, 230px)" }}
-            />
-            <img
-              src={project.images.leftBottom}
-              alt={`${project.name} preview 2`}
-              className="w-full object-cover rounded-[16px] sm:rounded-[20px] md:rounded-[24px] flex-1 min-h-0"
-            />
+        {/* Action Buttons */}
+        <div className="flex items-center gap-3 self-end sm:self-auto shrink-0 z-30">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              openProjectDetailsModal(project);
+            }}
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-[#7621B0] bg-[#7621B0]/40 text-white font-semibold uppercase tracking-wider px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm hover:bg-[#7621B0] transition-all duration-300 shadow-md shadow-[#7621B0]/30 cursor-pointer pointer-events-auto relative z-50 hover:scale-[1.02] active:scale-[0.98]"
+          >
+            View Details
+          </button>
+          <LiveProjectButton link={project.link} />
+        </div>
+      </div>
+
+      {/* Main Content Grid: Left Narrative + Right Swipable Image Showcase */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 flex-1 min-h-0 my-4 items-stretch overflow-hidden">
+        {/* Left Column: Description & Tags */}
+        <div className="lg:col-span-5 flex flex-col justify-between gap-4">
+          <div>
+            <p className="text-xs sm:text-sm md:text-base text-[#D7E2EA]/85 leading-relaxed font-light mb-4">
+              {project.cardDescription}
+            </p>
           </div>
-          <div className="w-full sm:w-[60%] flex sm:h-full flex-1 min-h-0">
-            <img
-              src={project.images.right}
-              alt={`${project.name} preview 3`}
-              className="w-full h-full object-cover rounded-[16px] sm:rounded-[20px] md:rounded-[24px] min-h-0"
-            />
+
+          <div>
+            <span className="text-[10px] uppercase font-mono tracking-wider text-[#D7E2EA]/50 block mb-2">
+              Technologies Used:
+            </span>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {project.tags.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 text-[11px] sm:text-xs font-mono rounded-lg bg-white/5 border border-white/10 text-[#D7E2EA]/90 hover:border-[#42fcff]/40 transition-colors"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-      </motion.div>
+
+        {/* Right Column: Clean Swipable Screenshot Frame */}
+        <div className="lg:col-span-7 flex flex-col min-h-0 h-full rounded-2xl border border-white/12 bg-black/60 overflow-hidden shadow-inner relative group/frame">
+          {/* Slide Dots Overlay */}
+          {totalGalleryImages > 1 && (
+            <div className="absolute top-3 right-3 z-30 flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-white/15 px-2.5 py-1 rounded-full pointer-events-none">
+              {project.gallery.map((_, idx) => (
+                <span
+                  key={idx}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    idx === activeImageIndex
+                      ? "bg-[#42fcff] w-3"
+                      : "bg-white/30 w-1.5"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Mouse Drag / Touch Swipe Image Container */}
+          <div className="relative flex-1 min-h-0 w-full overflow-hidden select-none touch-pan-y">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeImageIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.25 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.15}
+                onDragEnd={handleDragEnd}
+                className="w-full h-full cursor-grab active:cursor-grabbing relative"
+              >
+                <img
+                  src={currentGalleryItem.src}
+                  alt={project.name}
+                  draggable={false}
+                  className="w-full h-full object-cover object-top pointer-events-none"
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 pointer-events-none" />
+
+            {/* Left / Right Swipe Arrow Controls */}
+            {totalGalleryImages > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-[#7621B0] border border-white/20 text-white flex items-center justify-center backdrop-blur-md opacity-0 group-hover/frame:opacity-100 transition-all duration-200 cursor-pointer shadow-lg"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-[#7621B0] border border-white/20 text-white flex items-center justify-center backdrop-blur-md opacity-0 group-hover/frame:opacity-100 transition-all duration-200 cursor-pointer shadow-lg"
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export function ProjectsSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  const cardsData = projects.map((proj) => ({
+    id: proj.num,
+    image: proj.images.right,
+    project: proj,
+  }));
 
   return (
-    <>
-      <section
-        id="projects"
-        className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-20 relative px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
-      >
-        <FadeIn delay={0} y={40}>
+    <section
+      id="projects"
+      className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-20 relative px-3 sm:px-6 md:px-8 pt-16 sm:pt-20 md:pt-28 pb-10"
+    >
+      <FadeIn delay={0} y={40}>
+        <div className="text-center mb-8 sm:mb-12">
           <h2
-            className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 leading-none"
-            style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
+            className="hero-heading font-black uppercase text-center mt-2 leading-none"
+            style={{ fontSize: "clamp(2.8rem, 10vw, 140px)" }}
           >
-            Project
+            Projects
           </h2>
-        </FadeIn>
-
-        <div ref={containerRef} className="max-w-7xl mx-auto w-full relative">
-          {projects.map((project, i) => {
-            const targetScale = 1 - (projects.length - 1 - i) * 0.03;
-            return (
-              <ProjectCard
-                key={project.num}
-                project={project}
-                index={i}
-                progress={scrollYProgress}
-                targetScale={targetScale}
-                onViewDetails={setSelectedProject}
-              />
-            );
-          })}
         </div>
-      </section>
+      </FadeIn>
 
-      <ProjectDetailModal
-        project={selectedProject}
-        isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}
+      {/* Skiper UI StickyCard002 Animated GSAP Stack */}
+      <StickyCard002
+        cards={cardsData}
+        className="w-full"
+        containerClassName="max-w-7xl h-full border-0 shadow-none bg-transparent"
+        renderCard={(card) => (
+          <SingleProjectCard project={card.project} />
+        )}
       />
-    </>
+    </section>
   );
 }

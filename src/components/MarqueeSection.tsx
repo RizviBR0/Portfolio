@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import p1 from "../assets/projects/1.png";
-// import p2 from "../assets/projects/2.png";
+import p2 from "../assets/projects/2.png";
 import p3 from "../assets/projects/3.png";
 import p4 from "../assets/projects/4.png";
 import p5 from "../assets/projects/5.png";
@@ -13,14 +13,14 @@ import p11 from "../assets/projects/11.png";
 import p12 from "../assets/projects/12.png";
 import p13 from "../assets/projects/13.png";
 import p14 from "../assets/projects/14.png";
+import p15 from "../assets/projects/15.png";
 import p16 from "../assets/projects/16.png";
 import p17 from "../assets/projects/17.png";
 import p18 from "../assets/projects/18.png";
 import p19 from "../assets/projects/19.png";
 
-const row1Images = [p1, p19, p3, p4, p5, p6, p7, p8, p9, p10];
-
-const row2Images = [p11, p12, p13, p14, p16, p17, p18, p19];
+const row1Images = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10];
+const row2Images = [p11, p12, p13, p14, p15, p16, p17, p18, p19, p1];
 
 export function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -49,6 +49,7 @@ export function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
+      aria-label="Project Preview Showcase"
       className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
     >
       <div
@@ -60,7 +61,7 @@ export function MarqueeSection() {
             key={`row1-${i}`}
             src={src}
             alt="Project Preview"
-            loading="lazy"
+            decoding="async"
             className="w-105 h-67.5 rounded-2xl object-top object-cover shrink-0"
           />
         ))}
@@ -75,7 +76,7 @@ export function MarqueeSection() {
             key={`row2-${i}`}
             src={src}
             alt="Project Preview"
-            loading="lazy"
+            decoding="async"
             className="w-105 h-67.5 rounded-2xl object-top object-cover shrink-0"
           />
         ))}

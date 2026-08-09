@@ -61,7 +61,7 @@ function ProjectCard({
       } as CSSProperties}
     >
       <motion.article
-        className={`project-card ${index % 2 ? "project-card--reverse" : ""}`}
+        className="project-card"
         initial={{ y: shouldReduceMotion ? 0 : 56 }}
         whileInView={{ y: 0 }}
         viewport={{ once: true, amount: 0.12 }}

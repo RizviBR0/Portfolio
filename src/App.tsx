@@ -8,6 +8,7 @@ import { AboutSection } from "./components/AboutSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { SkillsSection } from "./components/SkillsSection";
 import { ProjectsSection } from "./components/ProjectsSection";
+import { TestimonialsSection } from "./components/TestimonialsSection";
 import { ExperienceSection } from "./components/ExperienceSection";
 import { EducationSection } from "./components/EducationSection";
 import { Footer } from "./components/Footer";
@@ -60,6 +61,7 @@ function PortfolioHome() {
         <ServicesSection />
         <SkillsSection />
         <ProjectsSection />
+        <TestimonialsSection />
         <ExperienceSection />
         <EducationSection />
       </main>
